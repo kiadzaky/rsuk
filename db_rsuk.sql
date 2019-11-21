@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2019 at 01:08 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Nov 21, 2019 at 05:57 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -178,7 +178,8 @@ CREATE TABLE `req_ambulance` (
 --
 
 INSERT INTO `req_ambulance` (`id_req_ambulance`, `id_ambulance`, `nik`, `keluhan`, `tanggal`, `alamat`, `link`) VALUES
-('AL15091901', 'AMBL2', '1234567890123456', 'Kecelakaan mobil dan pendarahan', '2019-11-15 02:51:19', 'Jln.Sumatra No.2', 'https://datatables.net/3/');
+('AL15091901', 'AMBL2', '1234567890123456', 'Kecelakaan mobil dan pendarahan', '2019-11-15 02:51:19', 'Jln.Sumatra No.2', 'https://datatables.net/3/'),
+('AL15091902', 'AMBL2', '1234567890123456', 'asdasd', '2019-11-21 04:56:55', 'Perum Milenia Blok D14', 'https://datatables.net/3/');
 
 -- --------------------------------------------------------
 
@@ -187,6 +188,7 @@ INSERT INTO `req_ambulance` (`id_req_ambulance`, `id_ambulance`, `nik`, `keluhan
 --
 
 CREATE TABLE `status_obat` (
+  `id_obat` int(11) NOT NULL,
   `no_resep` varchar(5) NOT NULL,
   `jml_obat` varchar(2) NOT NULL,
   `status` enum('belum terproses','dirproses','selesai','') NOT NULL
@@ -248,14 +250,24 @@ ALTER TABLE `poli`
 --
 ALTER TABLE `req_ambulance`
   ADD PRIMARY KEY (`id_req_ambulance`),
-  ADD UNIQUE KEY `id_ambulance` (`id_ambulance`),
-  ADD UNIQUE KEY `nik` (`nik`);
+  ADD KEY `id_ambulance` (`id_ambulance`),
+  ADD KEY `nik` (`nik`);
 
 --
 -- Indexes for table `status_obat`
 --
 ALTER TABLE `status_obat`
-  ADD PRIMARY KEY (`no_resep`);
+  ADD PRIMARY KEY (`id_obat`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `status_obat`
+--
+ALTER TABLE `status_obat`
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
