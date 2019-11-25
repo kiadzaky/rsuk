@@ -1,6 +1,6 @@
 <?php
 ob_start();
-// require_once('config.php');
+require_once('config.php');
 require_once('database.php');
 
 $connection = new Database($host, $user, $pass, $database);
@@ -372,7 +372,7 @@ if(@$_GET['act'] =='') {
                                         <td><?php echo $data->poli; ?></td>
                                         <td><?php echo $data->jadwal; ?></td>
                                         <td align="center">
-                                            <a id="edit_dr" data-toggle="modal" data-target="#edit" data-id="<?php echo $data->id_dokter; ?>" data-nama="<?php echo $data->nama_dokter; ?>" data-foto="<?php echo $data->foto; ?>" data-poli="<?php echo $data->poli; ?>" data-jadwal="<?php echo $data->jadwal; ?>">
+                                            <a id="edit_dr" data-toggle="modal" data-target="#edit" data-id="<?php echo $data->id_dokter; ?>" data-nama="<?php echo $data->nama_dokter; ?>" data-foto="<?php echo $data->foto; ?>" data-poli="<?php echo $data->id_poli; ?>" data-jadwal="<?php echo $data->id_jadwal; ?>">
                                            <button class="btn btn-primary btn-xs"><i class="fa fa-edit "></i>Edit</button></a>
                                            <a href="?page=tambah_dokter&act=del&id=<?php echo $data->id_dokter; ?>" onclick="return confirm('Yakin akan menghapus data ini?')">
                                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Hapus</button></a>
@@ -446,25 +446,25 @@ if(@$_GET['act'] =='') {
                     </div> 
                     <div class="form-group" align="left">
                     <label class="control-label" for="id_poli">Poli</label>
-                    <select name="id_poli" id="poli" class="form-control" required="">
+                    <select name="poli" id="id_poli" class="form-control" required="">
                         <?php
-                                $tampil = $dr->tampil();
+                                $tampil = $pl->tampil();
                                 while($data = $tampil->fetch_object()) {
                                 ?>
                                 ?>
-                                <option value="<?php echo $data->poli ?>"><?= $data->poli;?></option>
+                                <option value="<?php echo $data->id_poli ?>"><?= $data->poli;?></option>
                         <?php }?>
                     </select>
                     </div> 
                     <div class="form-group" align="left">
                         <label class="control-label" for="id_jadwal">Jadwal</label>
-                        <select name="id_jadwal" id="jadwal" class="form-control">
+                        <select name="jadwal" id="id_jadwal" class="form-control">
                             <?php
-                                $tampil = $dr->tampil();
+                                $tampil = $jd->tampil();
                                 while($data = $tampil->fetch_object()) {
                                 ?>
                                 ?>
-                                <option value="<?php echo $data->jadwal ?>"><?= $data->jadwal;?></option>
+                                <option value="<?php echo $data->id_jadwal ?>"><?= $data->jadwal;?></option>
                             <?php }?>
                         </select>
                     </div>
@@ -563,7 +563,7 @@ if(@$_GET['act'] =='') {
         $("#form").on("submit", (function(e) {
             e.preventDefault();
                 $.ajax({
-                    url : 'update_id.php',
+                    url : 'proses_edit_dokter.php',
                     type : 'POST',
                     data : new FormData(this),
                     contentType : false,
