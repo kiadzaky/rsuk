@@ -8,22 +8,24 @@
 		$jenis_kelamin = $_POST['jenis_kelamin'];
 		$no_telepon = $_POST['no_telepon'] ;
 		$foto = $_POST['foto'] ;
-		$level = 'pelanggan';
+		
 		$username = $_POST['username'];
 		$password= $_POST['password'];
+		$level = 'pelanggan';
 
-	$sql = "INSERT INTO `akun` (`nik`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `no_telepon`, `foto`, `level`) VALUES ('$nik', '$nama', '$tanggal_lahir', '$alamat', '$jenis_kelamin', '$no_telepon', '$foto', '$level')";
-	$sql1 = "INSERT INTO `login` (`nik`, `username`, `password`) VALUES ('$nik', '$username', '$password')";	
+	$sql = "INSERT INTO `akun` (`nik`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `no_telepon`, `foto`,`username`,`password`, `level`) VALUES ('$nik', '$nama', '$tanggal_lahir', '$alamat', '$jenis_kelamin', '$no_telepon','$foto','$username','$password', '$level')";
+	
 
 	$response = mysqli_query($link,$sql);
-	$response1 = mysqli_query($link,$sql1);
+	
 
-	if ($response && $response1) {
+	if ($response) {
 		$result['message'] = "sukses";
+		$result['success'] = "1";
 		
 	}else{
 		$result['message'] = "gagal";
-		$result['mysql'] = mysqli_error($sql);
+		$result['mysql'] = mysqli_error($link);
 	}
 	echo json_encode($result);
 	}else{
