@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2019 at 05:57 AM
+-- Generation Time: Nov 29, 2019 at 07:57 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -46,7 +46,8 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`nik`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `no_telepon`, `foto`, `username`, `password`, `level`) VALUES
-('1234567890123456', 'Indrawati', '2019-11-17', 'Jl.Mastrip V No.7', 'Wanita', '085123456342', 'dr-1573741526.jpg', 'indrawati', 'indrawati', '1');
+('1234567890123456', 'Indrawati', '2019-11-17', 'Jl.Mastrip V No.7', 'Wanita', '085123456342', 'dr-1573741526.jpg', 'indrawati', 'indrawati', '1'),
+('350097979797979', 'amy', '2019-11-27', 'jsiskxkxkxkxjxkxkxkxkxkxkxkkxkxk', 'Wanita', '08970605445', 'asdasd.ajpg', 'amy', 'amy', 'pelanggan');
 
 -- --------------------------------------------------------
 
@@ -66,6 +67,27 @@ CREATE TABLE `ambulance` (
 INSERT INTO `ambulance` (`id_ambulance`, `ambulance`) VALUES
 ('AMBL1', 'Ambulan Jenazah'),
 ('AMBL2', 'Ambulan Darurat');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `antrian`
+--
+
+CREATE TABLE `antrian` (
+  `id` int(11) NOT NULL,
+  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `no_registrasi` varchar(5) NOT NULL,
+  `no_antrian` varchar(4) NOT NULL,
+  `status_antrian` enum('0','1','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `antrian`
+--
+
+INSERT INTO `antrian` (`id`, `waktu`, `no_registrasi`, `no_antrian`, `status_antrian`) VALUES
+(6, '2019-11-29 06:57:18', 'PS001', 'P010', '1');
 
 -- --------------------------------------------------------
 
@@ -113,18 +135,6 @@ INSERT INTO `jadwal` (`id_jadwal`, `jadwal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
---
-
-CREATE TABLE `login` (
-  `nik` varchar(16) NOT NULL,
-  `username` varchar(16) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pasien`
 --
 
@@ -136,6 +146,13 @@ CREATE TABLE `pasien` (
   `keluhan` text NOT NULL,
   `riwayat_sakit` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pasien`
+--
+
+INSERT INTO `pasien` (`no_registrasi`, `nik`, `id_dokter`, `tanggal`, `keluhan`, `riwayat_sakit`) VALUES
+('PS001', '350097979797979', 'DR001', '2019-11-29 05:46:23', 'sakit pusing', 'asdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -211,6 +228,13 @@ ALTER TABLE `ambulance`
   ADD PRIMARY KEY (`id_ambulance`);
 
 --
+-- Indexes for table `antrian`
+--
+ALTER TABLE `antrian`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `no_registrasi` (`no_registrasi`);
+
+--
 -- Indexes for table `dokter`
 --
 ALTER TABLE `dokter`
@@ -223,13 +247,6 @@ ALTER TABLE `dokter`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id_jadwal`);
-
---
--- Indexes for table `login`
---
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`username`),
-  ADD KEY `nik` (`nik`);
 
 --
 -- Indexes for table `pasien`
@@ -264,6 +281,12 @@ ALTER TABLE `status_obat`
 --
 
 --
+-- AUTO_INCREMENT for table `antrian`
+--
+ALTER TABLE `antrian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `status_obat`
 --
 ALTER TABLE `status_obat`
@@ -274,17 +297,17 @@ ALTER TABLE `status_obat`
 --
 
 --
+-- Constraints for table `antrian`
+--
+ALTER TABLE `antrian`
+  ADD CONSTRAINT `antrian_ibfk_1` FOREIGN KEY (`no_registrasi`) REFERENCES `pasien` (`no_registrasi`);
+
+--
 -- Constraints for table `dokter`
 --
 ALTER TABLE `dokter`
   ADD CONSTRAINT `dokter_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dokter_ibfk_2` FOREIGN KEY (`id_poli`) REFERENCES `poli` (`id_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `login`
---
-ALTER TABLE `login`
-  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `akun` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pasien`
