@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2019 at 07:57 AM
+-- Generation Time: Nov 30, 2019 at 11:53 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -87,7 +87,31 @@ CREATE TABLE `antrian` (
 --
 
 INSERT INTO `antrian` (`id`, `waktu`, `no_registrasi`, `no_antrian`, `status_antrian`) VALUES
-(6, '2019-11-29 06:57:18', 'PS001', 'P010', '1');
+(7, '2019-11-30 10:35:23', 'PS001', 'P001', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `daftar_hari`
+--
+
+CREATE TABLE `daftar_hari` (
+  `id_hari` int(1) NOT NULL,
+  `hari` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `daftar_hari`
+--
+
+INSERT INTO `daftar_hari` (`id_hari`, `hari`) VALUES
+(1, 'senin'),
+(2, 'selasa'),
+(3, 'rabu'),
+(4, 'kamis'),
+(5, 'jumat'),
+(6, 'sabtu'),
+(7, 'sabtu');
 
 -- --------------------------------------------------------
 
@@ -99,18 +123,37 @@ CREATE TABLE `dokter` (
   `id_dokter` varchar(5) NOT NULL,
   `nama_dokter` varchar(30) NOT NULL,
   `foto` text NOT NULL,
-  `id_poli` varchar(5) NOT NULL,
-  `id_jadwal` varchar(5) NOT NULL
+  `id_poli` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dokter`
 --
 
-INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `foto`, `id_poli`, `id_jadwal`) VALUES
-('DR001', 'drg.Septyono Heriawan,Sp.Perio', 'dr-1573432960.jpg', 'POLI1', 'JDW01'),
-('DR002', 'dr.Hudoyo,Sp.PD', 'dr-1573432960.jpg', 'POLI2', 'JDW02'),
-('DR003', 'dr.Sutikno,Sp.JP', 'dr-1573744869.jpg', 'POLI3', 'JDW03');
+INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `foto`, `id_poli`) VALUES
+('DR001', 'drg.Septyono Heriawan,Sp.Perio', 'dr-1573432960.jpg', 'POLI1'),
+('DR002', 'dr.Hudoyo,Sp.PD', 'dr-1573432960.jpg', 'POLI2'),
+('DR003', 'dr.Sutikno,Sp.JP', 'dr-1573744869.jpg', 'POLI3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hari_kerja_dokter`
+--
+
+CREATE TABLE `hari_kerja_dokter` (
+  `id` int(3) NOT NULL,
+  `id_dokter` varchar(5) NOT NULL,
+  `id_hari` int(1) NOT NULL,
+  `id_jadwal` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hari_kerja_dokter`
+--
+
+INSERT INTO `hari_kerja_dokter` (`id`, `id_dokter`, `id_hari`, `id_jadwal`) VALUES
+(1, 'DR001', 1, 'JDW01');
 
 -- --------------------------------------------------------
 
@@ -131,6 +174,30 @@ INSERT INTO `jadwal` (`id_jadwal`, `jadwal`) VALUES
 ('JDW01', 'pagi'),
 ('JDW02', 'siang'),
 ('JDW03', 'malam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `no_antri`
+--
+
+CREATE TABLE `no_antri` (
+  `no_antrian` varchar(4) NOT NULL,
+  `status_antrian` enum('tersedia','tidak') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `no_antri`
+--
+
+INSERT INTO `no_antri` (`no_antrian`, `status_antrian`) VALUES
+('P001', 'tersedia'),
+('P002', 'tersedia'),
+('P003', 'tersedia'),
+('P004', 'tersedia'),
+('P005', 'tersedia'),
+('P006', 'tersedia'),
+('P007', 'tersedia');
 
 -- --------------------------------------------------------
 
@@ -232,14 +299,29 @@ ALTER TABLE `ambulance`
 --
 ALTER TABLE `antrian`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `no_registrasi` (`no_registrasi`);
+  ADD KEY `no_registrasi` (`no_registrasi`),
+  ADD KEY `no_antrian` (`no_antrian`);
+
+--
+-- Indexes for table `daftar_hari`
+--
+ALTER TABLE `daftar_hari`
+  ADD PRIMARY KEY (`id_hari`);
 
 --
 -- Indexes for table `dokter`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`id_dokter`),
-  ADD KEY `id_poli` (`id_poli`),
+  ADD KEY `id_poli` (`id_poli`);
+
+--
+-- Indexes for table `hari_kerja_dokter`
+--
+ALTER TABLE `hari_kerja_dokter`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_dokter` (`id_dokter`,`id_hari`,`id_jadwal`),
+  ADD KEY `id_hari` (`id_hari`),
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
@@ -247,6 +329,12 @@ ALTER TABLE `dokter`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id_jadwal`);
+
+--
+-- Indexes for table `no_antri`
+--
+ALTER TABLE `no_antri`
+  ADD PRIMARY KEY (`no_antrian`);
 
 --
 -- Indexes for table `pasien`
@@ -284,7 +372,13 @@ ALTER TABLE `status_obat`
 -- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `hari_kerja_dokter`
+--
+ALTER TABLE `hari_kerja_dokter`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `status_obat`
@@ -300,14 +394,22 @@ ALTER TABLE `status_obat`
 -- Constraints for table `antrian`
 --
 ALTER TABLE `antrian`
-  ADD CONSTRAINT `antrian_ibfk_1` FOREIGN KEY (`no_registrasi`) REFERENCES `pasien` (`no_registrasi`);
+  ADD CONSTRAINT `antrian_ibfk_1` FOREIGN KEY (`no_registrasi`) REFERENCES `pasien` (`no_registrasi`),
+  ADD CONSTRAINT `antrian_ibfk_2` FOREIGN KEY (`no_antrian`) REFERENCES `no_antri` (`no_antrian`);
 
 --
 -- Constraints for table `dokter`
 --
 ALTER TABLE `dokter`
-  ADD CONSTRAINT `dokter_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dokter_ibfk_2` FOREIGN KEY (`id_poli`) REFERENCES `poli` (`id_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `hari_kerja_dokter`
+--
+ALTER TABLE `hari_kerja_dokter`
+  ADD CONSTRAINT `hari_kerja_dokter_ibfk_1` FOREIGN KEY (`id_hari`) REFERENCES `daftar_hari` (`id_hari`),
+  ADD CONSTRAINT `hari_kerja_dokter_ibfk_2` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`),
+  ADD CONSTRAINT `hari_kerja_dokter_ibfk_3` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`);
 
 --
 -- Constraints for table `pasien`
