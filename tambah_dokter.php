@@ -353,7 +353,6 @@ if(@$_GET['act'] =='') {
                                     <tr>
                                         <th>ID Dokter</th>
                                         <th>Nama Dokter</th>
-                                        <th>Foto</th>
                                         <th>Poli</th>
                                         <th>Jadwal</th>  
                                         <th>Opsi</th>    
@@ -367,13 +366,13 @@ if(@$_GET['act'] =='') {
                                     <tr>
                                         <td><?php echo $data->id_dokter; ?></td>
                                         <td><?php echo $data->nama_dokter; ?></td>
-                                        <td align="center">
-                                            <img src="img/dokter/<?php echo $data->foto; ?>" width="70px"></td>
+                                        
+                                            
                                         <td><?php echo $data->poli; ?></td>
                                         <td><?php echo $data->jadwal; ?></td>
                                         <td align="center">
                                             <a id="edit_dr" data-toggle="modal" data-target="#edit" data-id="<?php echo $data->id_dokter; ?>" data-nama="<?php echo $data->nama_dokter; ?>" data-foto="<?php echo $data->foto; ?>" data-poli="<?php echo $data->id_poli; ?>" data-jadwal="<?php echo $data->id_jadwal; ?>">
-                                           <button class="btn btn-primary btn-xs"><i class="fa fa-edit "></i>Edit</button></a>
+                                           <button class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit "></i>Edit</button></a>
                                            <a href="?page=tambah_dokter&act=del&id=<?php echo $data->id_dokter; ?>" onclick="return confirm('Yakin akan menghapus data ini?')">
                                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Hapus</button></a>
                                         </td>
@@ -386,7 +385,6 @@ if(@$_GET['act'] =='') {
                                     <tr>
                                         <th>ID Dokter</th>
                                         <th>Nama Dokter</th>
-                                        <th>Foto</th>
                                         <th>Poli</th>
                                         <th>Jadwal</th>
                                         <th>Opsi</th>
@@ -420,62 +418,66 @@ if(@$_GET['act'] =='') {
     }
     ?>
     <!-- Hapus data dokter End-->
-    <!-- Edit data dokter Strat -->
-    <div id="edit" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+      <!-- awal edit modal reff -->
+      <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" align="left">Edit Data Dokter</h4>
-            </div>
-            <form id="form" enctype="multipart/form-data">
-                <div class="modal-body" id="modal-edit">
-                    <div class="form-group" align="left">
-                        <label class="control-label" for="id_dokter">ID Dokter</label>
-                        <input type="text" name="id_dokter" class="form-control" id="id_dokter" readonly>
-                    </div> 
-                    <div class="form-group" align="left">
-                        <label class="control-label" for="nama_dokter">Nama Dokter</label>
-                        <input type="hidden" name="id_dokter" id="id_dokter">
-                        <input type="text" name="nama_dokter" class="form-control" id="nama_dokter" required="">
-                    </div> 
-                    <div class="form-group" align="left">
-                        <label class="control-label" for="foto">Foto</label>
-                        <div style="padding-bottom:5px"><img src="" width="80px" id="pict"></div>
-                        <input type="file" name="foto" class="form-control" id="foto">
-                    </div> 
-                    <div class="form-group" align="left">
-                    <label class="control-label" for="id_poli">Poli</label>
-                    <select name="poli" id="id_poli" class="form-control" required="">
-                        <?php
-                                $tampil = $pl->tampil();
-                                while($data = $tampil->fetch_object()) {
-                                ?>
-                                ?>
-                                <option value="<?php echo $data->id_poli ?>"><?= $data->poli;?></option>
-                        <?php }?>
-                    </select>
-                    </div> 
-                    <div class="form-group" align="left">
-                        <label class="control-label" for="id_jadwal">Jadwal</label>
-                        <select name="jadwal" id="id_jadwal" class="form-control">
-                            <?php
-                                $tampil = $jd->tampil();
-                                while($data = $tampil->fetch_object()) {
-                                ?>
-                                ?>
-                                <option value="<?php echo $data->id_jadwal ?>"><?= $data->jadwal;?></option>
-                            <?php }?>
-                        </select>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Data Dokter</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+  <form role="form" action="proses_edit_dokter.php" method="POST">
+          <div class="modal-body">
+            <div class="form-example-int">
+              <input type="text" name="update_id" id="update_id">
+                <div class="form-group">
+                    <label>Id Dokter</label>
+                    <div class="nk-int-st">
+                        <input type="text" name="id_dokter" id="id_dokter" class="form-control input-sm" placeholder="Input id dokter" >
                     </div>
                 </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-success btn-xs" style="background-color: cornflowerblue;" name="edit" value="Edit">
+            </div>
+            <div class="form-example-int mg-t-15">
+                <div class="form-group">
+                    <label>Nama Dokter</label>
+                    <div class="nk-int-st">
+                        <input type="text" name="nama_dokter" id="nama_dokter" class="form-control input-sm" placeholder="Masukkan nama dokter">
                     </div>
-            </form>
-        </div>
-    </div>
+                </div>
+            </div>
+            <div class="form-example-int mg-t-15">
+                <div class="form-group">
+                    <label>Poli</label>
+                    <div class="nk-int-st">
+                        <input type="text" name="id_poli" id="id_poli" class="form-control input-sm" placeholder="Masukkan poli">
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int mg-t-15">
+                <div class="form-group">
+                    <label>Jadwal</label>
+                    <div class="nk-int-st">
+                        <input type="text" name="id_jadwal" id="id_jadwal" class="form-control input-sm" placeholder="Masukkan jadwal">
+                    </div>
+                </div>
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" name ="updatedata" class="btn btn-primary">Save Data</button>
+          </div>
 </div>
+</div>
+</div>
+</div>
+    <!-- modal Edit data dokter Start -->
+   
+
 
     <!-- Start Footer area-->
     <?php include 'part/footer.php' ?>
@@ -546,7 +548,30 @@ if(@$_GET['act'] =='') {
 	<!-- tawk chat JS
 		============================================ -->
     <script src="js/tawk-chat.js"></script>
-    <script type="text/javascript">
+    <script>
+      $(document).ready(function (){
+        $('.editbtn').on('click', function(){
+            $('#editmodal').modal('show');
+
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function (){
+              return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#update_id').val(data[0]);
+            $('#id_dokter').val(data[1]);
+            $('#nama_dokter').val(data[2]);
+            $('#id_poli').val(data[3]);
+            $('#id_jadwal').val(data[4]);
+        });
+
+      });
+    
+    
+    </script>
+    <!-- <script type="text/javascript">
     $(document).on("click", "#edit_dr", function() {
         var id_dokter = $(this).data('id');
         var nama_dokter = $(this).data('nama');
@@ -575,6 +600,6 @@ if(@$_GET['act'] =='') {
                 });
         }));
     })
-    </script> 
+    </script>  -->
 </body>
 </html>
