@@ -1,16 +1,14 @@
 <?php
-$conn = mysqli_connect("localhost","root","","newrsuk");
-$db = mysqli_select_db($conn,'newrsuk');
+$conn = mysqli_connect("localhost","root","","db_rsuk");
+$db = mysqli_select_db($conn,'db_rsuk');
 
 if(isset($_POST['insertdata']))
 {
-  $id_dokter = $_POST['id_dokter'];
-  $nama_dokter = $_POST['nama_dokter'];
-  $no_hp = $_POST['no_hp'];
-  $id_poli = $_POST['id_poli'];
-  $id_jadwal = $_POST['id_jadwal'];
+  $no_resep  = $_POST['no_resep'];
+  $jml_obat  = $_POST['jml_obat'];
+  $status    = status_obat(', ', $_POST['status']);
 
-  $query = "INSERT INTO dokter (`id_dokter`,`nama_dokter`,`no_hp`,'id_poli','id_jadwal') VALUES ('$id_dokter','$nama_dokter','$no_hp','$id_poli','$id_jadwal')";
+  $query = "INSERT INTO status_obat ('',`no_resep`,`jml_obat`,`status`) VALUES ('$no_resep','$jml_obat','$status')";
   $query_run = mysqli_query($conn, $query);
 
   if($query_run)
