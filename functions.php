@@ -1,6 +1,5 @@
 <?php
 $conn = mysqli_connect("localhost","root","","db_rsuk");
-
 function query($query){
   global $conn;
   $result =  mysqli_query($conn, $query);
@@ -10,6 +9,4 @@ function query($query){
   }
   return $rows;
 }
-
-
 ?>

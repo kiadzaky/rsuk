@@ -10,8 +10,7 @@ if(isset($_POST['deletedata']))
   {
     echo '<script> alert("Data Delete")</script>';
     header('Location: registrasi_pasien.php');
-  }
-  else
+  }else
 {
   echo '<script> alert("Data not Delete")</script>';
 }
