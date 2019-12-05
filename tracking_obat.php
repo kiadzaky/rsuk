@@ -28,7 +28,7 @@ $obt = query("SELECT * FROM status_obat");
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Data Table | Notika - Notika Admin Template</title>
+    <title>Data Tracking Obat | RSU Kaliwates Admin</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -85,288 +85,62 @@ $obt = query("SELECT * FROM status_obat");
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- Start Header Top Area -->
-    <div class="header-top-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="logo-area">
-                        <a href="#"><img src="img/logo/logo.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <div class="header-top-menu">
-                        <ul class="nav navbar-nav notika-top-nav">
-                            <li class="nav-item dropdown">
-                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-search"></i></span></a>
-                                <div role="menu" class="dropdown-menu search-dd animated flipInX">
-                                    <div class="search-input">
-                                        <i class="notika-icon notika-left-arrow"></i>
-                                        <input type="text" />
-                                    </div>
-                                </div>
-                            </li>
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   <!-- Start Header Top Area -->
+    <?php include 'part/header.php' ?>
     <!-- End Header Top Area -->
-    <!-- Mobile Menu start -->
-    <div class="mobile-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="mobile-menu">
-                        <nav id="dropdown">
-                            <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="registrasi_pasien.php">Registrasi Pasien</a>
-                                    <!-- <ul class="collapse dropdown-header-top">
-                                        <li><a href="index.html">Dashboard One</a></li>
-                                        <li><a href="index-2.html">Dashboard Two</a></li>
-                                        <li><a href="index-3.html">Dashboard Three</a></li>
-                                        <li><a href="index-4.html">Dashboard Four</a></li>
-                                        <li><a href="analytics.html">Analytics</a></li>
-                                        <li><a href="widgets.html">Widgets</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demoevent" href="#">Ambulance</a>
-                                    <ul id="demoevent" class="collapse dropdown-header-top">
-                                        <!-- <li><a href="inbox.html">Inbox</a></li> -->
-                                        <li><a href="view-email.html">Penjemputan Darurat</a></li>
-                                        <li><a href="compose-email.html">Penjemputan Jenazah</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#democrou" href="admin_rsuk.php">Tracking Obat</a>
-                                    <!-- <ul id="democrou" class="collapse dropdown-header-top">
-                                        <li><a href="animations.html">Animations</a></li>
-                                        <li><a href="google-map.html">Google Map</a></li>
-                                        <li><a href="data-map.html">Data Maps</a></li>
-                                        <li><a href="code-editor.html">Code Editor</a></li>
-                                        <li><a href="image-cropper.html">Images Cropper</a></li>
-                                        <li><a href="wizard.html">Wizard</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demolibra" href="#">Tambah Dokter</a>
-                                    <!-- <ul id="demolibra" class="collapse dropdown-header-top">
-                                        <li><a href="flot-charts.html">Flot Charts</a></li>
-                                        <li><a href="bar-charts.html">Bar Charts</a></li>
-                                        <li><a href="line-charts.html">Line Charts</a></li>
-                                        <li><a href="area-charts.html">Area Charts</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Laporan</a>
-                                    <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="normal-table.html">Laporan Registrasi Pasien</a></li>
-                                        <li><a href="data-table.html">Laporan Tracking Obat</a></li>
-                                        <li><a href="data-table.html">Laporan Ambulance</a></li>
-                                    </ul>
-                                </li>
-                                <!-- <li><a data-toggle="collapse" data-target="#demo" href="#">Forms</a>
-                                    <ul id="demo" class="collapse dropdown-header-top">
-                                        <li><a href="form-elements.html">Form Elements</a></li>
-                                        <li><a href="form-components.html">Form Components</a></li>
-                                        <li><a href="form-examples.html">Form Examples</a></li>
-                                    </ul>
-                                </li> -->
-                                <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">App views</a>
-                                    <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                        <li><a href="notification.html">Notifications</a>
-                                        </li>
-                                        <li><a href="alert.html">Alerts</a>
-                                        </li>
-                                        <li><a href="modals.html">Modals</a>
-                                        </li>
-                                        <li><a href="buttons.html">Buttons</a>
-                                        </li>
-                                        <li><a href="tabs.html">Tabs</a>
-                                        </li>
-                                        <li><a href="accordion.html">Accordion</a>
-                                        </li>
-                                        <li><a href="dialog.html">Dialogs</a>
-                                        </li>
-                                        <li><a href="popovers.html">Popovers</a>
-                                        </li>
-                                        <li><a href="tooltips.html">Tooltips</a>
-                                        </li>
-                                        <li><a href="dropdown.html">Dropdowns</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Login</a>
-                                    <ul id="Pagemob" class="collapse dropdown-header-top">
-                                        <li><a href="contact.html">Contact</a>
-                                        </li>
-                                        <!-- <li><a href="invoice.html">Invoice</a>
-                                        </li>
-                                        <li><a href="typography.html">Typography</a>
-                                        </li> -->
-                                        <li><a href="color.html">Sign</a>
-                                        </li>
-                                        <li><a href="login-register.html">Login</a>
-                                        <!-- </li>
-                                        <li><a href="404.html">404 Page</a>
-                                        </li> -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Mobile Menu end -->
-    <!-- Main Menu area start-->
+    <!-- Navbar vertikal start -->
+    <?php include 'part/navbar_v.php' ?>
+    <!-- Navbar vertikal end -->
+    <!-- Navbar horizontal start-->
     <div class="main-menu-area mg-tb-40">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a data-toggle="tab" href="registrasi_pasien.php"><i class="notika-icon notika-house"></i> Registrasi Pasien</a>
+                        <li><a href="index.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
                         </li>
-                        <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-mail"></i> Ambulance</a>
+                        <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+                        <li  class="active"><a data-toggle="tab" href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> Tambah Dokter</a>
+                        <li><a href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
                         </li>
-                        <!-- <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i> Forms</a> -->
-                        </li>
-                        <!-- <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a> -->
-                        </li>
-                        <!-- <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Login</a>
-                        </li> -->
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
-                            <!-- <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.html">Dashboard One</a>
-                                </li>
-                                <li><a href="index-2.html">Dashboard Two</a>
-                                </li>
-                                <li><a href="index-3.html">Dashboard Three</a>
-                                </li>
-                                <li><a href="index-4.html">Dashboard Four</a>
-                                </li>
-                                <li><a href="analytics.html">Analytics</a>
-                                </li>
-                                <li><a href="widgets.html">Widgets</a>
-                                </li>
-                            </ul> -->
-                        </div>
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="inbox.html">Ambulance Darurat</a>
+                                <li><a href="index.php">Ambulance Darurat</a>
                                 </li>
-                                <li><a href="view-email.html">Penjemputan Jenazah</a>
+                                <li><a href="index.php">Penjemputan Jenazah</a>
                                 </li>
-                                <!-- <li><a href="compose-email.html">Compose Email</a>
-                                </li> -->
-                            </ul>
-                        </div>
-                        <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <!-- <li><a href="animations.html">Animations</a>
-                                </li>
-                                <li><a href="google-map.html">Google Map</a>
-                                </li>
-                                <li><a href="data-map.html">Data Maps</a>
-                                </li>
-                                <li><a href="code-editor.html">Code Editor</a>
-                                </li>
-                                <li><a href="image-cropper.html">Images Cropper</a>
-                                </li>
-                                <li><a href="wizard.html">Wizard</a>
-                                </li> -->
                             </ul>
                         </div>
                         <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <!-- <li><a href="flot-charts.html">Flot Charts</a>
+                                <li><a href="index_dokter.php">Data Dokter</a>
                                 </li>
-                                <li><a href="bar-charts.html">Bar Charts</a>
-                                </li>
-                                <li><a href="line-charts.html">Line Charts</a>
-                                </li>
-                                <li><a href="area-charts.html">Area Charts</a>
-                                </li> -->
-                            </ul>
-                        </div>
-                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="normal-table.html">Laporan Registrasi Pasien</a>
-                                </li>
-                                <li><a href="data-table.html">Laporan Tracking Obat</a>
-                                </li>
-                                <li><a href="data-table.html">Laporan Ambulance</a>
+                                <li><a href="index_user">Data User</a>
                                 </li>
                             </ul>
                         </div>
-                        <!-- <div id="Forms" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="form-elements.html">Form Elements</a>
+                                <li><a href="index.php">Laporan Registrasi Pasien</a>
                                 </li>
-                                <li><a href="form-components.html">Form Components</a>
+                                <li><a href="index.php">Laporan Tracking Obat</a>
                                 </li>
-                                <li><a href="form-examples.html">Form Examples</a>
+                                <li><a href="laporan_ambulan.php">Laporan Ambulance</a>
                                 </li>
                             </ul>
-                        </div> -->
-                        <!-- <div id="Appviews" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="notification.html">Notifications</a>
-                                </li>
-                                <li><a href="alert.html">Alerts</a>
-                                </li>
-                                <li><a href="modals.html">Modals</a>
-                                </li>
-                                <li><a href="buttons.html">Buttons</a>
-                                </li>
-                                <li><a href="tabs.html">Tabs</a>
-                                </li>
-                                <li><a href="accordion.html">Accordion</a>
-                                </li>
-                                <li><a href="dialog.html">Dialogs</a>
-                                </li>
-                                <li><a href="popovers.html">Popovers</a>
-                                </li>
-                                <li><a href="tooltips.html">Tooltips</a>
-                                </li>
-                                <li><a href="dropdown.html">Dropdowns</a>
-                                </li>
-                            </ul>
-                        </div> -->
-                        <!-- <div id="Page" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="contact.html">Contact</a>
-                                </li>
-                                <li><a href="invoice.html">Invoice</a>
-                                </li>
-                                <li><a href="typography.html">Typography</a>
-                                </li>
-                                <li><a href="color.html">Color</a>
-                                </li>
-                                <li><a href="login-register.html">Login Register</a>
-                                </li>
-                                <li><a href="404.html">404 Page</a>
-                                </li>
-                            </ul>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Main Menu area End-->
+    <!-- Navbar horizontal End-->
 	<!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
 		<div class="container">
@@ -387,7 +161,7 @@ $obt = query("SELECT * FROM status_obat");
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<!-- <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika"></i></button> -->
+									<button type="button" data-toggle="modal" data-placement="left" title="Download Report" class="btn btn-success btn-md"  data-target="#exampleModal"><i class="fa fa-plus"></i><i class="notika-icon notika-plus"></i></button>
 								</div>
 							</div>
 						</div>
@@ -398,9 +172,6 @@ $obt = query("SELECT * FROM status_obat");
 	</div>
   <!--awal modal-->
   <!-- Button trigger modal -->
-
-
-
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
@@ -411,14 +182,8 @@ $obt = query("SELECT * FROM status_obat");
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
-
-
-
 <form action="" method="POST">
         <div class="modal-body">
-
-
           <div class="form-example-int">
               <div class="form-group">
 
@@ -464,45 +229,6 @@ $obt = query("SELECT * FROM status_obat");
       </div>
     </div>
   </div>
-
-
-
-
-  <div class="container">
-  <div class="breadcomb-list">
-  <div class="card">
-<div class="card-body">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Add Data
-  </button>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-  <!--akhir modal -->
-  <!-- <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="insertdata" class="btn btn-primary">Save</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 	<!-- Breadcomb area End-->
     <!-- Data Table area Start-->
     <div class="data-table-area">
@@ -510,10 +236,10 @@ $obt = query("SELECT * FROM status_obat");
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
-                        <!-- <div class="basic-tb-hd">
-                            <h2>Basic Example</h2>
-                            <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
-                        </div> -->
+                        <div class="basic-tb-hd">
+                            <h2>Data Tracking Obat</h2>
+                            <p>Berisi semua data singkat pemesanan obat</p>
+                        </div>
                         <div class="table-responsive">
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
@@ -522,11 +248,9 @@ $obt = query("SELECT * FROM status_obat");
                                         <th>No Resep</th>
                                         <th>Jumlah Obat</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th>Opsi</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                   <?php $i = 1; ?>
                                   <?php foreach ($obt as $row) : ?>
@@ -535,12 +259,9 @@ $obt = query("SELECT * FROM status_obat");
                                         <td><?= $row['no_resep'];?></td>
                                         <td><?= $row['jml_obat'];?></td>
                                         <td><?= $row['status'];?></td>
-                                        <!-- <td> <a href="edit.php?edi=<?php echo $row['id']  ?>" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal"> -->
-                                          <!-- Edit -->
                                           <td> <button type="button"class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit"></i>edit</button>
                                            <button type="button"class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
                                         </td>
-
                                     </tr>
                                     <?php $i++; ?>
                                   <?php endforeach; ?>
@@ -551,8 +272,7 @@ $obt = query("SELECT * FROM status_obat");
                                         <th>No Resep</th>
                                         <th>Jumlah Obat</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
-
+                                        <th>Opsi</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -562,7 +282,6 @@ $obt = query("SELECT * FROM status_obat");
             </div>
         </div>
     </div>
-
     <!-- awal edit modal -->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div class="modal-dialog" role="document">
@@ -621,8 +340,6 @@ $obt = query("SELECT * FROM status_obat");
         </div>
       </div>
     </div>
-
-
     <!-- akhir edit modal -->
     <!-- awal delete modal -->
     <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -651,24 +368,10 @@ $obt = query("SELECT * FROM status_obat");
         </div>
       </div>
     </div>
-
-
-
     <!-- akhir delete modal -->
     <!-- Data Table area End-->
     <!-- Start Footer area-->
-    <div class="footer-copyright-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="footer-copy-right">
-                        <p>Copyright © 2018
-. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   <?php include 'part/footer.php' ?>
     <!-- End Footer area-->
     <!-- jquery
 
