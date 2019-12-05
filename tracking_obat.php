@@ -1,8 +1,6 @@
 <?php
 require 'functions.php';
 include 'insertcode.php';
-// include 'kode_otomatis.php';
-
 if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
@@ -12,19 +10,10 @@ if (isset($_POST['insertdata'])){
 
   header('location:tracking_obat.php?sukse');
 }
-// $sql =  mysqli_query ($conn, "SELECT * FROM implode ORDER BY no_resep DESC");
-// ambildata dari tabel status Obat
 $obt = query("SELECT * FROM status_obat");
-// if(@$_GET['act'] ==''){
-
-
-
-
-
 ?>
 <!doctype html>
 <html class="no-js" lang="">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -83,7 +72,6 @@ $obt = query("SELECT * FROM status_obat");
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-
 <body>
    <!-- Start Header Top Area -->
     <?php include 'part/header.php' ?>
@@ -97,7 +85,7 @@ $obt = query("SELECT * FROM status_obat");
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="index.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
+                        <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
                         </li>
                         <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
                         </li>
@@ -186,11 +174,10 @@ $obt = query("SELECT * FROM status_obat");
         <div class="modal-body">
           <div class="form-example-int">
               <div class="form-group">
-
                   <label>No Resep</label>
                   <div class="nk-int-st">
                     <?php include 'kode_otomatis.php' ?>
-                      <input type="hidden" name="no_resep"value="<?php echo $no_resep; ?>" class="form-control input-sm" placeholder="Input No Resep" required>
+                      <input type="hidden" name="no_resep"value="<?php echo $no_resep; ?>" class="form-control input-sm" required>
                   </div>
               </div>
           </div>
@@ -292,7 +279,6 @@ $obt = query("SELECT * FROM status_obat");
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
   <form role="form" action="updatecode.php" method="POST">
           <div class="modal-body">
             <div class="form-example-int">
@@ -309,7 +295,6 @@ $obt = query("SELECT * FROM status_obat");
                     <label>Jumlah Obat</label>
                     <div class="nk-int-st">
                         <input type="number" name="jml_obat" id="jml_obat" class="form-control input-sm" placeholder="Masukkan Jumlah Obat">
-
                         <div class="form-group">
                             <label>Status</label>
                             <div class="nk-int-st">
@@ -351,12 +336,9 @@ $obt = query("SELECT * FROM status_obat");
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
   <form role="form" action="deletecode.php" method="POST">
           <div class="modal-body">
-
               <input type="hidden" name="delete_id" id="delete_id">
-
               <h4>Apakah anda yakin ingin menghapus data ini? </h4>
             </div>
           <div class="modal-footer">
@@ -374,7 +356,6 @@ $obt = query("SELECT * FROM status_obat");
    <?php include 'part/footer.php' ?>
     <!-- End Footer area-->
     <!-- jquery
-
 		============================================ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -441,53 +422,34 @@ $obt = query("SELECT * FROM status_obat");
 	<!-- tawk chat JS
 		============================================ -->
     <script src="js/tawk-chat.js"></script>
-
 <script>
 $(document).ready(function(){
   $('.deletebtn').on('click', function(){
-
       $('#deletemodal').modal('show');
-
         $tr = $(this).closest('tr');
-
         var data = $tr.children("td").map(function() {
           return $(this).text();
         }).get();
-
         console.log(data);
-
         $('#delete_id').val(data[0]);
-
   });
 });
-
 </script>
-
-
-
     <script>
     $(document).ready(function(){
       $('.editbtn').on('click', function(){
-
           $('#editModal').modal('show');
-
             $tr = $(this).closest('tr');
-
             var data = $tr.children("td").map(function() {
               return $(this).text();
             }).get();
-
             console.log(data);
-
             $('#update_id').val(data[0]);
             $('#no_resep').val(data[1]);
             $('#jml_obat').val(data[2]);
             $('#status').val(data[3]);
-
       });
     });
-
     </script>
 </body>
-
 </html>
