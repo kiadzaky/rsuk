@@ -140,7 +140,7 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+									<!-- <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button> -->
 								</div>
 							</div>
 						</div>
@@ -173,11 +173,10 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                                         <th>Jadwal</th>
                                         <th>Keluhan</th>
                                         <th>Riwayat Sakit</th>
-                                        <th>Aksi</th>
+                                        <th>Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php $i = 1; ?>
                                   <?php foreach ($rgs as $row) : ?>
                                     <tr>
                                         <td><?= $row["no_registrasi"];?></td>
@@ -192,16 +191,19 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                                              <button type="button"class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
                                         </td>
                                     </tr>
-                                    <?php $i++; ?>
                                   <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>No Resep</th>
-                                        <th>Jumlah Obat</th>
-                                        <th>Status</th>
-                                        <th>Aksi</th>
-
+                                        <th>No Registrasi</th>
+                                        <th>Nama</th>
+                                        <th>Poli</th>
+                                        <th>Dokter</th>
+                                        <th>Tanggal</th>
+                                        <th>Jadwal</th>
+                                        <th>Keluhan</th>
+                                        <th>Riwayat Sakit</th>
+                                        <th>Opsi</th>
                                     </tr>
                                 </tfoot>
                             </table>
