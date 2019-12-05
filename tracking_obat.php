@@ -4,7 +4,7 @@ include 'insertcode.php';
 if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
-  $status    = status_obat(', ', $_POST['status']);
+  $status    = implode(', ', $_POST['status']);
 
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
 
@@ -89,7 +89,7 @@ $obt = query("SELECT * FROM status_obat");
                         </li>
                         <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
                         </li>
-                        <li  class="active"><a data-toggle="tab" href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+                        <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
                         </li>
                         <li><a href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
                         </li>
@@ -115,9 +115,9 @@ $obt = query("SELECT * FROM status_obat");
                         </div>
                         <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Laporan Registrasi Pasien</a>
+                                <li><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
                                 </li>
-                                <li><a href="index.php">Laporan Tracking Obat</a>
+                                <li><a href="laporanobat.php">Laporan Tracking Obat</a>
                                 </li>
                                 <li><a href="laporan_ambulan.php">Laporan Ambulance</a>
                                 </li>

@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Data Table | Notika - Notika Admin Template</title>
+    <title>Laporan Obat</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -80,11 +80,11 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="index.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
+                        <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
                         </li>
                         <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+                        <li><a href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
                         </li>
                         <li><a href="tambah-dokter.php"><i class="notika-icon notika-form"></i> Tambah Dokter</a>
                         </li>
@@ -110,11 +110,11 @@
                         </div>
                         <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li class="active"><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
+                                <li><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
                                 </li>
-                                <li><a href="index.php">Laporan Tracking Obat</a>
+                                <li class="active"><a href="laporanobat.php">Laporan Tracking Obat</a>
                                 </li>
-                                <li ><a href="index.php">Laporan Ambulance</a>
+                                <li ><a href="laporan_ambulan.php">Laporan Ambulance</a>
                                 </li>
                             </ul>
                         </div>
@@ -137,15 +137,22 @@
 										<i class="notika-icon notika-windows"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Laporan Registrasi Pasien</h2>
+										<h2>Laporan Obat</h2>
 										<p>Selamat datang di RSU Kaliwates <span class="bread-ntd">Admin</span></p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-								
-							</div>
-						</div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                                    <div class="breadcomb-report" style="padding-left: 480px;">
+                                    <a type="button" data-toggle="tooltip" data-placement="left" title="Download Report" class="btn" href="cetakobat.php" ><i class="notika-icon notika-sent"></i>
+
+                                      </a>
+                                    </div>
+                                </div>
+                            </div>
+	   					</div>
+
 					</div>
 				</div>
 			</div>
@@ -158,15 +165,9 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
-                        <div class="basic-tb-hd">
-                            <h2>Laporan Registrasi Pasien</h2>
-                            <p>Laporan data registrasi pasien</p>
-                        </div>
+                        
                         <div class="table-responsive">
-                        <form method="get">
-                           
-                            <a href="cetakobat.php" target="_blank">CETAK</a>
-                        </form>
+                       
 
                             <table id="data-table-basic" class="table table-striped">
                                 <br>
