@@ -5,7 +5,7 @@ if(isset($_POST['insertdata']))
 {
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
-  $status    = implode (', ', $_POST['status']);
+  $status    = status_obat(', ', $_POST['status']);
   $query = "INSERT INTO status_obat ('',`no_resep`,`jml_obat`,`status`) VALUES ('$no_resep','$jml_obat','$status')";
   $query_run = mysqli_query($conn, $query);
   if($query_run)
