@@ -77,15 +77,15 @@ include 'functions.php';
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-            <li><a href="index.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
+            <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
             </li>
             <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
             </li>
-            <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+            <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
             </li>
             <li><a href="tambah_dokter.php"><i class="notika-icon notika-form"></i> Tambah Dokter</a>
             </li>
-            <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
+            <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
             </li>
           </ul>
           <div class="tab-content custom-menu-content">
@@ -119,9 +119,9 @@ include 'functions.php';
             </div>
             <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
               <ul class="notika-main-menu-dropdown">
-                <li><a href="index.php">Laporan Registrasi Pasien</a>
+                <li><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
                 </li>
-                <li><a href="index.php">Laporan Tracking Obat</a>
+                <li><a href="laporanobat.php">Laporan Tracking Obat</a>
                 </li>
                 <li><a href="laporan_ambulan.php">Laporan Ambulance</a>
                 </li>
@@ -153,10 +153,84 @@ include 'functions.php';
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                 <div class="breadcomb-report">
-                  <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                  <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i></i>
+                    <?php
+    if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
+        $filter = $_GET['filter']; // Ambil data filder yang dipilih user
+        if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+            
+            echo '<a style="color:white;" type="button" href="print_ambulance.php?filter=1&tanggal='.$_GET['tanggal'].'" class="notika-icon notika-sent"></a>';
+             // Tampilkan Laporan Registrasi Pasien sesuai tanggal yang diinput oleh user pada filter
+        }else if($filter == '2'){ // Jika filter nya 2 (per bulan)
+            
+            echo '<a style="color:white;" type="button" href="print_ambulance.php?filter=2&bulan='.$_GET['bulan'].'&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
+           
+        }else{ // Jika filter nya 3 (per tahun)
+            
+            echo '<a style="color:white;" type="button" href="print_ambulance.php?filter=3&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
+            
+            }
+    }else{ // Jika user tidak mengklik tombol tampilkan
+
+        echo '<a style="color:white;" type="button" href="print_ambulance.php" class="notika-icon notika-sent"></a>';
+        
+    }
+    ?>
+                  </button>
                 </div>
               </div>
             </div>
+            <br>
+                        <br>
+      <form method="get" action="">
+        <label>Filter Berdasarkan</label><br>
+        <select name="filter" id="filter">
+            <option value="">Pilih</option>
+            <option value="1">Per Tanggal</option>
+            <option value="2">Per Bulan</option>
+            <option value="3">Per Tahun</option>
+        </select>
+        <div id="form-tanggal">
+            <label>Tanggal</label><br>
+            <input type="text" name="tanggal" class="input-tanggal" />
+            <br /><br />
+        </div>
+        <div id="form-bulan">
+            <label>Bulan</label><br>
+            <select name="bulan">
+                <option value="">Pilih</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+            <br /><br />
+        </div>
+        <div id="form-tahun">
+            <label>Tahun</label><br>
+            <select name="tahun">
+                <option value="">Pilih</option>
+                <?php
+                $query = "SELECT YEAR(tanggal) AS tahun FROM req_ambulance GROUP BY YEAR(tanggal)"; // Tampilkan tahun sesuai di tabel transaksi
+                $sql = mysqli_query($link, $query); // Eksekusi/Jalankan query dari variabel $query
+                while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
+                    echo '<option value="'.$data['tahun'].'">'.$data['tahun'].'</option>';
+                }
+                ?>
+            </select>
+            <br /><br />
+        </div>
+        <button type="submit">Tampilkan</button>
+        <a href="laporan_ambulan.php">Reset Filter</a>
+    </form>
           </div>
         </div>
       </div>
@@ -169,67 +243,13 @@ include 'functions.php';
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="data-table-list">
-            <div class="basic-tb-hd">
-              <h2>Laporan Ambulance</h2>
-              <p>Laporan data pemesanan ambulance</p>
-            </div>
+            
             <div class="table-responsive">
-              <form method="get" action="">
-                <label>Filter Berdasarkan</label><br>
-                <select name="filter" id="filter">
-                  <option value="">Pilih</option>
-                  <option value="1">Per Tanggal</option>
-                  <option value="2">Per Bulan</option>
-                  <option value="3">Per Tahun</option>
-                </select>
-                <br /><br />
-                <div id="form-tanggal">
-                  <label>Tanggal</label><br>
-                  <input type="text" name="tanggal" class="input-tanggal" />
-                  <br />
-                  <br />
-                </div>
-                <div id="form-bulan">
-                  <label>Bulan</label><br>
-                  <select name="bulan">
-                    <option value="">Pilih</option>
-                    <option value="1">Januari</option>
-                    <option value="2">Februari</option>
-                    <option value="3">Maret</option>
-                    <option value="4">April</option>
-                    <option value="5">Mei</option>
-                    <option value="6">Juni</option>
-                    <option value="7">Juli</option>
-                    <option value="8">Agustus</option>
-                    <option value="9">September</option>
-                    <option value="10">Oktober</option>
-                    <option value="11">November</option>
-                    <option value="12">Desember</option>
-                  </select>
-                  <br /><br />
-                </div>
-                <div id="form-tahun">
-                  <label>Tahun</label><br>
-                  <select name="tahun">
-                    <option value="">Pilih</option>
-                    <?php
-                    $query = "SELECT YEAR(tanggal) AS tahun FROM req_ambulance GROUP BY YEAR(tanggal)";
-                    // Tampilkan tahun sesuai di tabel Laporan Ambulance                
-                    $sql = mysqli_query($conn, $query);
-                    // Eksekusi/Jalankan query dari variabel $query                
-                    while ($data = mysqli_fetch_array($sql)) {
-                      // Ambil semua data dari hasil eksekusi $sql                    
-                      echo '<option value="' . $data['tahun'] . '">' . $data['tahun'] . '</option>';
-                    }
-                    ?>
-                  </select>
-                  <br /><br />
-                </div>
-                <button type="submit">Tampilkan</button>
-                <button type="submit" href="laporan_ambulan.php">Reset Filter</button>
-              </form>
-              <hr />
-              <?php if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+              <body class="app sidebar-mini rtl">
+              
+              
+              <?php 
+              if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 // Cek apakah user telah memilih filter dan klik tombol tampilkan        
                 $filter = $_GET['filter'];
                 // Ambil data filder yang dipilih user        
@@ -237,26 +257,26 @@ include 'functions.php';
                   // Jika filter nya 1 (per tanggal)            
                   $tanggal = date('d-m-y', strtotime($_GET['tanggal']));
                   echo '<b>Data Laporan Ambulance Tanggal ' . $tanggal . '</b><br /><br />';
-                  echo '<a href="print_ambulance.php?filter=1&tanggal=' . $_GET['tanggal'] . '">Cetak PDF</a><br /><br />';
+                  
                   $query = "SELECT * FROM req_ambulance JOIN ambulance ON req_ambulance.id_ambulance = ambulance.id_ambulance JOIN akun ON req_ambulance.nik = akun.nik WHERE DATE(tanggal)='" . $_GET['tanggal'] . "'";
                   // Tampilkan data Laporan Ambulance sesuai tanggal yang diinput oleh user pada filter        
                 } else if ($filter == '2') { // Jika filter nya 2 (per bulan)            
                   $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
                   echo '<b>Data Laporan Ambulance Bulan ' . $nama_bulan[$_GET['bulan']] . ' ' . $_GET['tahun'] . '</b><br /><br />';
-                  echo '<a href="print_ambulance.php?filter=2&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '">Cetak PDF</a><br /><br />';
+                  
                   $query = "SELECT * FROM req_ambulance JOIN ambulance ON req_ambulance.id_ambulance = ambulance.id_ambulance JOIN akun ON req_ambulance.nik = akun.nik WHERE MONTH(tanggal)='" . $_GET['bulan'] . "' AND YEAR(tanggal)='" . $_GET['tahun'] . "'";
                   // Tampilkan data Laporan Ambulance sesuai bulan dan tahun yang diinput oleh user pada filter        
                 } else {
                   // Jika filter nya 3 (per tahun)            
                   echo '<b>Data Laporan Ambulance Tahun ' . $_GET['tahun'] . '</b><br /><br />';
-                  echo '<a href="print_ambulance.php?filter=3&tahun=' . $_GET['tahun'] . '">Cetak PDF</a><br /><br />';
+                  
                   $query = "SELECT * FROM req_ambulance JOIN ambulance ON req_ambulance.id_ambulance = ambulance.id_ambulance JOIN akun ON req_ambulance.nik = akun.nik WHERE YEAR(tanggal)='" . $_GET['tahun'] . "'";
                   // Tampilkan data Laporan Ambulance sesuai tahun yang diinput oleh user pada filter        
                 }
               } else {
                 // Jika user tidak mengklik tombol tampilkan        
                 echo '<b>Semua Data Laporan Ambulance</b><br /><br />';
-                echo '<a href="print_ambulance.php">Cetak PDF</a><br /><br />';
+                
                 $query = "SELECT * FROM req_ambulance JOIN ambulance ON req_ambulance.id_ambulance = ambulance.id_ambulance JOIN akun ON req_ambulance.nik = akun.nik ORDER BY tanggal";
                 // Tampilkan semua data Laporan Ambulance diurutkan berdasarkan tanggal   
               }
