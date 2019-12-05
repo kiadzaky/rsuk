@@ -21,8 +21,8 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Laporan</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="index.php">Laporan Registrasi Pasien</a></li>
-                                        <li><a href="index.php">Laporan Tracking Obat</a></li>
+                                        <li><a href="laporan_registrasi_pasien.php">Laporan Registrasi Pasien</a></li>
+                                        <li><a href="laporan_tracking_obat.php">Laporan Tracking Obat</a></li>
                                         <li><a href="laporan_ambulan.php">Laporan Ambulance</a></li>
                                     </ul>
                                 </li>
