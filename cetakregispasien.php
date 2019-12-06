@@ -5,15 +5,47 @@
   <style>
     table {
       border-collapse:collapse;
+      text-align: center;
       table-layout:fixed;width: 630px;
     }
     table td {
       word-wrap:break-word;
       width: 20%;
+      text-align: center;
     }
+    table { vertical-align: top; }
+tr    { vertical-align: top; }
+td    { vertical-align: top; }
+.style37 {
+    font-size: 12px;
+    
+}
+.style38 {font-size: 12px}
+.style14 {font-size: 10px}
   </style>
+   
 </head>
 <body>
+    <bookmark title="Lettre" level="0" ></bookmark>
+    <table style="width: 100%; text-align: center; font-size: 16px; font-weight: bold">
+        <tr>
+          <td style="width:8%" rowspan="3"><img src="img/rolas-medika-nu.png" alt="Logo" width="80" height="78"></td>
+          <td style="width:85%">RUMAH SAKIT UMUM KALIWATES JEMBER</td>
+        </tr>
+        <tr>
+          <td class="style37">Jl. Diah Pitaloka No.4A, Kaliwates Kidul, Kaliwates, Jember </td>
+        </tr>
+        <tr>
+          <td class="style38">Telp : (0331) 483505, (0331) 483309</td>
+        </tr>
+
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+        <hr>
+    </table>
+    <br>
+    <br>
   <?php
   // Load file koneksi.php
   include "konek.php";
@@ -56,9 +88,10 @@
                                             join jadwal on dokter.id_jadwal = jadwal.id_jadwal ORDER BY tanggal"; // Tampilkan semua data transaksi diurutkan berdasarkan tanggal
   }
   ?>
-  <table border="1" cellpadding="8">
+<br>
+  <table border="1" cellpadding="8" width="680">
   <tr>
-    <th>No. Registrasi</th>
+                                        <th>No. Registrasi</th>
                                         <th>Nama</th>
                                         <th>Poli</th>
                                         <th>Nama Dokter</th>
@@ -97,5 +130,5 @@ ob_end_clean();
 require_once('html2pdf/html2pdf.class.php');
 $pdf = new HTML2PDF('P','A3','en');
 $pdf->WriteHTML($html);
-$pdf->Output('Laporan Registrasi Pasien.pdf', 'D');
+$pdf->Output();
 ?>
