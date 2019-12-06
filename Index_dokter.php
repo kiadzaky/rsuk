@@ -83,7 +83,7 @@ $dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,j
             </li>
             <li><a href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
             </li>
-            <li><a href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
+            <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
             </li>
             <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
             </li>
@@ -101,7 +101,7 @@ $dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,j
               <ul class="notika-main-menu-dropdown">
                 <li><a href="index_dokter.php">Data Dokter</a>
                 </li>
-                <li><a href="index_user">Data User</a>
+                <li><a href="index_user.php">Data User</a>
                 </li>
               </ul>
             </div>

@@ -77,13 +77,13 @@ $user = query("SELECT * FROM akun");
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-            <li class="active"><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
+            <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
             </li>
             <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
             </li>
-            <li><a data-toggle="tab" href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+            <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
             </li>
-            <li><a href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
+            <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
             </li>
             <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
             </li>
