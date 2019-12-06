@@ -134,8 +134,8 @@ $dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,j
                     <i class="notika-icon notika-windows"></i>
                   </div>
                   <div class="breadcomb-ctn">
-                    <h2>Data Table</h2>
-                    <p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
+                    <h2>Data Dokter</h2>
+                    <p>Selamat Datang <span class="bread-ntd">Admin</span></p>
                   </div>
                 </div>
               </div>
@@ -231,8 +231,8 @@ $dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,j
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="data-table-list">
             <div class="basic-tb-hd">
-              <h2>Data Registrasi Pasien</h2>
-              <p>Berisi semua data registrasi pasien</p>
+              <h2>Data Dokter</h2>
+              <p>Berisi semua data singkat dokter</p>
             </div>
             <div class="table-responsive">
               <table id="data-table-basic" class="table table-striped">
