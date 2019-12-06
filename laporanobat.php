@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Laporan Obat</title>
+    <title>Laporan Obat | RSU Kaliwates Admin</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -86,8 +86,7 @@
                         </li>
                         <li><a href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
                         </li>
-                        <li><a href="tambah-dokter.php"><i class="notika-icon notika-form"></i> Tambah Dokter</a>
-                        </li>
+                        <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
                         <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
                         </li>
                     </ul>
@@ -100,11 +99,11 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Input Data Obat</a>
+                                <li><a href="index_dokter.php">Data Dokter</a>
                                 </li>
-                                <li><a href="index.php">History Obat</a>
+                                <li><a href="index_user.php">Data User</a>
                                 </li>
                             </ul>
                         </div>
@@ -173,7 +172,7 @@
                                 <br>
                                 <thead>
                                     <tr>
-                                        
+                                        <th>ID Obat</th>
                                         <th>No. Resep</th>
                                         <th>Jumlah Obat</th>
                                         <th>Status</th>
@@ -189,6 +188,7 @@
                                     while($data = mysqli_fetch_array($sql)){
                                     ?>
                                     <tr>
+                                        <td><?php echo $data['id_obat']; ?></td>
                                         <td><?php echo $data['no_resep']; ?></td>
                                         <td><?php echo $data['jml_obat']; ?></td>
                                         <td><?php echo $data['status']; ?></td>                  

@@ -82,7 +82,7 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                         </li>
                         <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
                         </li>
-                        <li><a href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
+                        <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
                         </li>
                         <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
                         </li>
@@ -100,7 +100,7 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="index_dokter.php">Data Dokter</a>
                                 </li>
-                                <li><a href="index_user">Data User</a>
+                                <li><a href="index_user.php">Data User</a>
                                 </li>
                             </ul>
                         </div>

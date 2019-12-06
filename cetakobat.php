@@ -23,6 +23,7 @@
   ?>
   <table border="1" cellpadding="8">
   <tr>
+     <th>ID Obat</th>
     <th>No. Resep</th>
                                         <th>Jumlah Obat</th>
                                         <th>Status</th>
@@ -35,6 +36,7 @@
     while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
      // $tgl = date('d-m-Y', strtotime($data['tgl'])); // Ubah format tanggal jadi dd-mm-yyyy
           echo "<tr>";
+            echo "<td>".$data['id_obat']."</td>";
             echo "<td>".$data['no_resep']."</td>";
             echo "<td>".$data['jml_obat']."</td>";
             echo "<td>".$data['status']."</td>";

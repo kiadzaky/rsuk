@@ -4,7 +4,7 @@ include 'insertcode.php';
 if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
-  $status    = status_obat(', ', $_POST['status']);
+  $status    = implode(', ', $_POST['status']);
 
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
 
@@ -91,7 +91,7 @@ $obt = query("SELECT * FROM status_obat");
                         </li>
                         <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
                         </li>
-                        <li><a href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
+                        <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
                         </li>
                         <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
                         </li>
@@ -109,7 +109,7 @@ $obt = query("SELECT * FROM status_obat");
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="index_dokter.php">Data Dokter</a>
                                 </li>
-                                <li><a href="index_user">Data User</a>
+                                <li><a href="index_user.php">Data User</a>
                                 </li>
                             </ul>
                         </div>

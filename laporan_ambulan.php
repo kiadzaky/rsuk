@@ -83,8 +83,7 @@ include 'functions.php';
             </li>
             <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
             </li>
-            <li><a href="tambah_dokter.php"><i class="notika-icon notika-form"></i> Tambah Dokter</a>
-            </li>
+            <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
             <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
             </li>
           </ul>
@@ -97,14 +96,14 @@ include 'functions.php';
                 </li>
               </ul>
             </div>
-            <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
-              <ul class="notika-main-menu-dropdown">
-                <li><a href="index.php">Input Data Obat</a>
-                </li>
-                <li><a href="index.php">History Obat</a>
-                </li>
-              </ul>
-            </div>
+            <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="index_dokter.php">Data Dokter</a>
+                                </li>
+                                <li><a href="index_user.php">Data User</a>
+                                </li>
+                            </ul>
+                        </div>
             <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
               <ul class="notika-main-menu-dropdown">
                 <li><a href="flot-charts.html">Flot Charts</a>
