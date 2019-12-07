@@ -9,7 +9,7 @@ if (isset($_POST['updatedata'])) {
     $id_poli = $_POST['poli'];
     $id_jadwal = $_POST['id_jadwal'];
 
-    $query = "UPDATE dokter SET id_dokter='$id_dokter',nama_dokter='$nama_dokter',no_hp='$no_hp',id_poli='$id_poli',id_jadwal='$id_jadwal' WHERE id_dokter='$id_dokter' ";
+    $query = "UPDATE dokter SET nama_dokter='$nama_dokter',no_hp='$no_hp',id_poli='$id_poli',id_jadwal='$id_jadwal' WHERE id_dokter='$id_dokter' ";
     $query_run = mysqli_query($conn, $query);
 
     if ($query_run) {
@@ -19,3 +19,4 @@ if (isset($_POST['updatedata'])) {
         echo '<script> alert("Data not Update")</script>';
     }
 }
+?>

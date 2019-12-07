@@ -1,59 +1,42 @@
-<?php ob_start(); ?>
-<html>
-<head>
-  <title>Cetak PDF</title>
-  <style>
-    table {
-      border-collapse:collapse;
-      table-layout:fixed;width: 630px;
-    }
-    table td {
-      word-wrap:break-word;
-      width: 20%;
-    }
-  </style>
-</head>
-<body>
-  <?php
-  // Load file koneksi.php
-  include "konek.php";
-  
-
-  
-  ?>
-  <table border="1" cellpadding="8">
-  <tr>
-     <th>ID Obat</th>
-    <th>No. Resep</th>
-                                        <th>Jumlah Obat</th>
-                                        <th>Status</th>
-  </tr>
-  <?php
-  $query = "SELECT * FROM status_obat"; 
-  $sql = mysqli_query($link, $query); // Eksekusi/Jalankan query dari variabel $query
-  $row = mysqli_num_rows($sql); // Ambil jumlah data dari hasil eksekusi $sql
-  if($row > 0){ // Jika jumlah data lebih dari 0 (Berarti jika data ada)
-    while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
-     // $tgl = date('d-m-Y', strtotime($data['tgl'])); // Ubah format tanggal jadi dd-mm-yyyy
-          echo "<tr>";
-            echo "<td>".$data['id_obat']."</td>";
-            echo "<td>".$data['no_resep']."</td>";
-            echo "<td>".$data['jml_obat']."</td>";
-            echo "<td>".$data['status']."</td>";
-            echo "</tr>";
-    }
-  }else{ // Jika data tidak ada
-    echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-  }
-  ?>
-  </table>
-</body>
-</html>
 <?php
-$html = ob_get_contents();
-ob_end_clean();
-require_once('html2pdf/html2pdf.class.php');
-$pdf = new HTML2PDF('P','A5','en');
-$pdf->WriteHTML($html);
-$pdf->Output('Laporan Obat.pdf', 'D');
+// memanggil library FPDF
+require('fpdf/fpdf.php');
+// intance object dan memberikan pengaturan halaman PDF
+$pdf = new FPDF('P','mm','A4');
+// membuat halaman baru
+$pdf->AddPage();
+$pdf->Image('img/rolas-medika-nu.png',10,10,25,25);
+// setting jenis font yang akan digunakan
+$pdf->SetFont('Arial','B',16);
+// mencetak string 
+$pdf->Cell(190,7,'RUMAH SAKIT UMUM KALIWATES JEMBER',0,1,'C');
+$pdf->SetFont('Arial','B',12);
+$pdf->Cell(190,7,'Jl. Diah Pitaloka No.4A, Kaliwates Kidul, Kaliwates, Jember',0,1,'C');
+$pdf->SetFont('Arial','B',12);
+$pdf->Cell(190,7,'Telp : (0331) 483505, (0331) 483309',0,1,'C');
+$pdf->Ln(3);
+$pdf->cell(190, 0.6, '', '0', '1', 'C', true);
+$pdf->Ln(3);
+//$pdf->Ln(100);
+// Memberikan space kebawah agar tidak terlalu rapat
+$pdf->Cell(10,7,'',0,1);
+
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(47.5,8,'ID OBAT',1,0,'C');
+$pdf->Cell(47.5,8,'NO. RESEP',1,0,'C');
+$pdf->Cell(47.5,8,'JUMLAH',1,0,'C');
+$pdf->Cell(47.5,8,'STATUS',1,1,'C');
+
+$pdf->SetFont('Arial','',10);
+
+include 'konek.php';
+$mahasiswa = mysqli_query($link, "select * from status_obat");
+while ($row = mysqli_fetch_array($mahasiswa)){
+    $pdf->Cell(47.5,8,$row['id_obat'],1,0,'C');
+    $pdf->Cell(47.5,8,$row['no_resep'],1,0,'C');
+    $pdf->Cell(47.5,8,$row['jml_obat'],1,0,'C');
+    $pdf->Cell(47.5,8,$row['status'],1,1,'C'); 
+}
+
+$pdf->Output();
 ?>

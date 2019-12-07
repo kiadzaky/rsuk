@@ -107,7 +107,7 @@ $user = query("SELECT * FROM akun");
             </div>
             <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
               <ul class="notika-main-menu-dropdown">
-                <li><a href="laporanregistrasi.php">Laporan Registrasi Pasien</a>
+                <li><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
                 </li>
                 <li><a href="laporanobat.php">Laporan Tracking Obat</a>
                 </li>
