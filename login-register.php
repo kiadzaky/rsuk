@@ -76,8 +76,10 @@
                     <div class="nk-int-st">
                         <input type="password" class="form-control" placeholder="Password" name="password" required="">
                     </div>
+                    <br/>
+                    <br/>
                 </div>
-               <input type="submit" name="submit" class="notika-icon btn btn-success" value="LOGIN" style="color: black; ">
+               <input type="submit" name="submit" class="btn btn-success btn-xs" value="LOGIN" style="color: white; background-color: lightseagreen;">
                 
             </div>
         </form>
