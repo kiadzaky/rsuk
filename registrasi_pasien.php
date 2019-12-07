@@ -178,7 +178,7 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                             </div>
                             <div class="form-group" align="left">
                               <label>Poli</label>
-                              <select name="id_poli" class="form-control" required>
+                              <select name="id_poli" id="poli" class="form-control" required>
                                 <?php
                                 $sql = "SELECT * FROM poli";
                                 $query = mysqli_query($conn, $sql);
@@ -192,7 +192,7 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                             </div>
                             <div class="form-group" align="left">
                               <label>Nama Dokter</label>
-                              <select name="id_dokter" class="form-control" required>
+                              <select name="id_dokter" id="dokter" class="form-control" required>
                                 <?php
                                 $sql = "SELECT * FROM dokter";
                                 $query = mysqli_query($conn, $sql);
@@ -206,7 +206,7 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                             </div>
                             <div class="form-group" align="left">
                               <label>Jadwal</label>
-                              <select name="id_jadwal" class="form-control" required>
+                              <select name="id_jadwal" id="jadwal" class="form-control" required>
                                 <?php
                                 $sql = "SELECT * FROM jadwal";
                                 $query = mysqli_query($conn, $sql);

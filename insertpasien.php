@@ -11,7 +11,8 @@ if (isset($_POST['insertdata'])) {
   $keluhan = $_POST['keluhan'];
   $riwayat_sakit = $_POST['riwayat_sakit'];
 
-  $query = mysqli_query($conn, "INSERT INTO pasien VALUES ('$no_registrasi','$nama','$id_poli','$id_dokter','$id_jadwal','$keluhan','$riwayat_sakit')");
+  $query = mysqli_query($conn, "INSERT INTO pasien VALUES ('$no_registrasi','$nama','$id_poli','$id_dokter','', 
+    $id_jadwal','$keluhan','$riwayat_sakit')");
 
   if ($query) {
     echo '<script> alert("Data Saved")</script>';
