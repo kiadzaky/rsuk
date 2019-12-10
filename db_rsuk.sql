@@ -1,4 +1,13 @@
 -- phpMyAdmin SQL Dump
+<<<<<<< HEAD
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 13, 2019 at 07:37 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
+=======
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
@@ -6,6 +15,7 @@
 -- Generation Time: Nov 30, 2019 at 11:53 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,6 +51,8 @@ CREATE TABLE `akun` (
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
+=======
 --
 -- Dumping data for table `akun`
 --
@@ -49,6 +61,7 @@ INSERT INTO `akun` (`nik`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `
 ('1234567890123456', 'Indrawati', '2019-11-17', 'Jl.Mastrip V No.7', 'Wanita', '085123456342', 'dr-1573741526.jpg', 'indrawati', 'indrawati', '1'),
 ('350097979797979', 'amy', '2019-11-27', 'jsiskxkxkxkxjxkxkxkxkxkxkxkkxkxk', 'Wanita', '08970605445', 'asdasd.ajpg', 'amy', 'amy', 'pelanggan');
 
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 -- --------------------------------------------------------
 
 --
@@ -57,6 +70,11 @@ INSERT INTO `akun` (`nik`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `
 
 CREATE TABLE `ambulance` (
   `id_ambulance` varchar(5) NOT NULL,
+<<<<<<< HEAD
+  `ambulance` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+=======
   `ambulance` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,6 +131,7 @@ INSERT INTO `daftar_hari` (`id_hari`, `hari`) VALUES
 (6, 'sabtu'),
 (7, 'sabtu');
 
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 -- --------------------------------------------------------
 
 --
@@ -123,13 +142,24 @@ CREATE TABLE `dokter` (
   `id_dokter` varchar(5) NOT NULL,
   `nama_dokter` varchar(30) NOT NULL,
   `foto` text NOT NULL,
+<<<<<<< HEAD
+  `id_poli` varchar(5) NOT NULL,
+  `id_jadwal` varchar(5) NOT NULL
+=======
   `id_poli` varchar(5) NOT NULL
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dokter`
 --
 
+<<<<<<< HEAD
+INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `foto`, `id_poli`, `id_jadwal`) VALUES
+('DR01', 'drg.Septyono Heriawan,Sp.Perio', 'dr-1573432960.jpg', 'POLI1', 'JDW01'),
+('DR02', 'dr.Hudoyo,Sp.PD', 'dr-1573432960.jpg', 'POLI2', 'JDW02'),
+('DR03', 'dr.Sutikno, Sp.JP', 'dr-1573532860.jpg', 'POLI1', 'JDW01');
+=======
 INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `foto`, `id_poli`) VALUES
 ('DR001', 'drg.Septyono Heriawan,Sp.Perio', 'dr-1573432960.jpg', 'POLI1'),
 ('DR002', 'dr.Hudoyo,Sp.PD', 'dr-1573432960.jpg', 'POLI2'),
@@ -154,6 +184,7 @@ CREATE TABLE `hari_kerja_dokter` (
 
 INSERT INTO `hari_kerja_dokter` (`id`, `id_dokter`, `id_hari`, `id_jadwal`) VALUES
 (1, 'DR001', 1, 'JDW01');
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 
 -- --------------------------------------------------------
 
@@ -178,6 +209,17 @@ INSERT INTO `jadwal` (`id_jadwal`, `jadwal`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `nik` varchar(16) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+=======
 -- Table structure for table `no_antri`
 --
 
@@ -199,6 +241,7 @@ INSERT INTO `no_antri` (`no_antrian`, `status_antrian`) VALUES
 ('P006', 'tersedia'),
 ('P007', 'tersedia');
 
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 -- --------------------------------------------------------
 
 --
@@ -214,6 +257,8 @@ CREATE TABLE `pasien` (
   `riwayat_sakit` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
+=======
 --
 -- Dumping data for table `pasien`
 --
@@ -221,6 +266,7 @@ CREATE TABLE `pasien` (
 INSERT INTO `pasien` (`no_registrasi`, `nik`, `id_dokter`, `tanggal`, `keluhan`, `riwayat_sakit`) VALUES
 ('PS001', '350097979797979', 'DR001', '2019-11-29 05:46:23', 'sakit pusing', 'asdasdasdasd');
 
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 -- --------------------------------------------------------
 
 --
@@ -254,6 +300,11 @@ CREATE TABLE `req_ambulance` (
   `keluhan` text NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `alamat` varchar(50) NOT NULL,
+<<<<<<< HEAD
+  `koordinat` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+=======
   `link` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -265,6 +316,7 @@ INSERT INTO `req_ambulance` (`id_req_ambulance`, `id_ambulance`, `nik`, `keluhan
 ('AL15091901', 'AMBL2', '1234567890123456', 'Kecelakaan mobil dan pendarahan', '2019-11-15 02:51:19', 'Jln.Sumatra No.2', 'https://datatables.net/3/'),
 ('AL15091902', 'AMBL2', '1234567890123456', 'asdasd', '2019-11-21 04:56:55', 'Perum Milenia Blok D14', 'https://datatables.net/3/');
 
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 -- --------------------------------------------------------
 
 --
@@ -272,7 +324,10 @@ INSERT INTO `req_ambulance` (`id_req_ambulance`, `id_ambulance`, `nik`, `keluhan
 --
 
 CREATE TABLE `status_obat` (
+<<<<<<< HEAD
+=======
   `id_obat` int(11) NOT NULL,
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
   `no_resep` varchar(5) NOT NULL,
   `jml_obat` varchar(2) NOT NULL,
   `status` enum('belum terproses','dirproses','selesai','') NOT NULL
@@ -295,6 +350,8 @@ ALTER TABLE `ambulance`
   ADD PRIMARY KEY (`id_ambulance`);
 
 --
+<<<<<<< HEAD
+=======
 -- Indexes for table `antrian`
 --
 ALTER TABLE `antrian`
@@ -309,10 +366,14 @@ ALTER TABLE `daftar_hari`
   ADD PRIMARY KEY (`id_hari`);
 
 --
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 -- Indexes for table `dokter`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`id_dokter`),
+<<<<<<< HEAD
+  ADD KEY `id_poli` (`id_poli`),
+=======
   ADD KEY `id_poli` (`id_poli`);
 
 --
@@ -322,6 +383,7 @@ ALTER TABLE `hari_kerja_dokter`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_dokter` (`id_dokter`,`id_hari`,`id_jadwal`),
   ADD KEY `id_hari` (`id_hari`),
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
@@ -331,10 +393,18 @@ ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id_jadwal`);
 
 --
+<<<<<<< HEAD
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`username`),
+  ADD KEY `nik` (`nik`);
+=======
 -- Indexes for table `no_antri`
 --
 ALTER TABLE `no_antri`
   ADD PRIMARY KEY (`no_antrian`);
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 
 --
 -- Indexes for table `pasien`
@@ -355,13 +425,21 @@ ALTER TABLE `poli`
 --
 ALTER TABLE `req_ambulance`
   ADD PRIMARY KEY (`id_req_ambulance`),
+<<<<<<< HEAD
+  ADD UNIQUE KEY `id_ambulance` (`id_ambulance`),
+  ADD UNIQUE KEY `nik` (`nik`);
+=======
   ADD KEY `id_ambulance` (`id_ambulance`),
   ADD KEY `nik` (`nik`);
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 
 --
 -- Indexes for table `status_obat`
 --
 ALTER TABLE `status_obat`
+<<<<<<< HEAD
+  ADD PRIMARY KEY (`no_resep`);
+=======
   ADD PRIMARY KEY (`id_obat`);
 
 --
@@ -385,12 +463,26 @@ ALTER TABLE `hari_kerja_dokter`
 --
 ALTER TABLE `status_obat`
   MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT;
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 
 --
 -- Constraints for dumped tables
 --
 
 --
+<<<<<<< HEAD
+-- Constraints for table `dokter`
+--
+ALTER TABLE `dokter`
+  ADD CONSTRAINT `dokter_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `dokter_ibfk_2` FOREIGN KEY (`id_poli`) REFERENCES `poli` (`id_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `akun` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
+=======
 -- Constraints for table `antrian`
 --
 ALTER TABLE `antrian`
@@ -410,6 +502,7 @@ ALTER TABLE `hari_kerja_dokter`
   ADD CONSTRAINT `hari_kerja_dokter_ibfk_1` FOREIGN KEY (`id_hari`) REFERENCES `daftar_hari` (`id_hari`),
   ADD CONSTRAINT `hari_kerja_dokter_ibfk_2` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`),
   ADD CONSTRAINT `hari_kerja_dokter_ibfk_3` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`);
+>>>>>>> aab7e9d37c58f299331b8820ea3ff1f0e7d90937
 
 --
 -- Constraints for table `pasien`

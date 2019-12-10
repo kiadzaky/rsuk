@@ -12,7 +12,7 @@
 		if (mysqli_num_rows($response)==1) {
 			$row = mysqli_fetch_assoc($response);
 			$index['nama'] = $row['nama'];
-			$index['alamat'] = $row['alamat'];
+			$index['nik'] = $row['nik'];
 			array_push($result['login'], $index);
 
 			$result['success'] = "1";
