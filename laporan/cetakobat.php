@@ -1,11 +1,11 @@
 <?php
 // memanggil library FPDF
-require('fpdf/fpdf.php');
+require('../fpdf/fpdf.php');
 // intance object dan memberikan pengaturan halaman PDF
 $pdf = new FPDF('P','mm','A4');
 // membuat halaman baru
 $pdf->AddPage();
-$pdf->Image('img/rolas-medika-nu.png',10,10,25,25);
+$pdf->Image('../img/rolas-medika-nu.png',10,10,25,25);
 // setting jenis font yang akan digunakan
 $pdf->SetFont('Arial','B',16);
 // mencetak string 
@@ -29,7 +29,7 @@ $pdf->Cell(47.5,8,'STATUS',1,1,'C');
 
 $pdf->SetFont('Arial','',10);
 
-include 'konek.php';
+include '../konek.php';
 $mahasiswa = mysqli_query($link, "select * from status_obat");
 while ($row = mysqli_fetch_array($mahasiswa)){
     $pdf->Cell(47.5,8,$row['id_obat'],1,0,'C');

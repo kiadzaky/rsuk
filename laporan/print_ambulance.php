@@ -29,7 +29,7 @@ td    { vertical-align: top; }
     <bookmark title="Lettre" level="0" ></bookmark>
     <table style="width: 100%; text-align: center; font-size: 16px; font-weight: bold">
         <tr>
-          <td style="width:8%" rowspan="3"><img src="img/rolas-medika-nu.png" alt="Logo" width="80" height="78"></td>
+          <td style="width:8%" rowspan="3"><img src="../img/rolas-medika-nu.png" alt="Logo" width="80" height="78"></td>
           <td style="width:85%">RUMAH SAKIT UMUM KALIWATES JEMBER</td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@ td    { vertical-align: top; }
     <br>
 <?php
         // Load file functions.php  
-        include "functions.php";
+        include "../functions.php";
         if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             // Cek apakah user telah memilih filter    
             $filter = $_GET['filter'];
@@ -115,7 +115,7 @@ td    { vertical-align: top; }
 <?php
 $html = ob_get_contents();
 ob_end_clean();
-require_once('html2pdf/html2pdf.class.php');
+require_once('../html2pdf/html2pdf.class.php');
 $pdf = new HTML2PDF('P','A3','en');
 $pdf->WriteHTML($html);
 $pdf->Output();
