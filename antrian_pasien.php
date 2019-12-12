@@ -13,10 +13,8 @@
     <?php include 'part/navbar_h.php' ?>
     <!-- Mobile Menu end -->
     <!-- Main Menu area start-->
-<?php 
-include 'config.php';
-$query = $link->query("SELECT * FROM `antrian` WHERE status_antrian = '0' ORDER BY no_antrian DESC LIMIT 1");
-$row = mysqli_fetch_array($query);
+<?php
+    include 'ambil_no.php';
 ?>
 
      <div class="data-table-area">
@@ -24,33 +22,36 @@ $row = mysqli_fetch_array($query);
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="email-statis-inner notika-shadow">
+                    <h4>Sisa Antrian: <?= $row['jml'] ?></h4>
                         <div class="email-ctn-round">
                             <div class="email-rdn-hd">
-                                <h2>Email Statistics</h2>
+                                <h2 style="text-align: center;">NOMOR ANTRIAN</h2>
                             </div>
-                            <div class="email-statis-wrap">
+                            <div class="ambil-no">
                                 
                                     <?php
-                                    if($query->num_rows>0){
+                                    if($query->num_rows>0 && $row['jml']>0){
                                         ?>
-                                        <div class="email-round-nock">
-                                        <h1 style="font-size: 250px"><?= $row['no_antrian']?></h1>
+                                        <div class="row-antrian">
+                                        <h1 class="load" style="font-size: 200px"><?= $row['no_antrian']?></h1>
+                                        <button class="btn btn-info notika-btn-info waves-effect" disabled="disabled" style="font-size: 25px; text-transform: uppercase; padding-right: 100px; padding-left: 100px"><?= $row['nama']?></button>
                                         </div>
-                                <div class="email-ctn-nock" style="margin-top: 130px">
+                                <div class="email-ctn-nock" style="margin-top: 10px">
                                     <form method="post" action="reload_antrian.php">
                                         <input type="text" name="no_antrian" hidden="" value="<?= $row['no_antrian']?>">
                                     <input class="btn-lg" type="submit" name="lanjut" value="LANJUT" style="background-color: green;color: white">
+                                </div>
                                     </form>
                                         <?php
                                     }else{
                                         ?>
-                                        <div class="email-round-nock">
-                                        <h1 style="font-size: 100px">KOSONG</h1>
+                                        <div class="">
+                                        <h1 class="load" style="font-size: 100px">KOSONG</h1>
                                         </div>
                                         <?php
                                     }
                                     ?>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -59,17 +60,6 @@ $row = mysqli_fetch_array($query);
         </div>
     </div>
 
-<script type="text/javascript">
-    var no_antrian = $("input[name='no_antrian']").val();
-    $.ajax({
-        url: 'reload_antrian.php',
-        method: 'GET',
-        data: {status_antrian: 1},
-        cache: false,
-        dataType:'html'
-    });
-
-</script>
 
 
     <?php include 'part/navbar_v.php' ?>
