@@ -1,6 +1,6 @@
 <?php
 require 'config.php';
-$query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, link FROM `req_ambulance` join ambulance on req_ambulance.id_ambulance=ambulance.id_ambulance WHERE status_req = '0' or status_req = '1'");
+$query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, link FROM `req_ambulance`  WHERE id_ambulance='AMBL1' and (status_req = '0' or status_req = '1')");
 
 ?>
 
@@ -26,16 +26,15 @@ $query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, kel
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="index.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
-                        </li>
-                        <li class="active"><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
-                        </li>
-                        <li><a href="index.php"><i class="notika-icon notika-form"></i> Tambah Dokter</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
-                        </li>
+                        <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
+            </li>
+            <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
+            </li>
+            <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+            </li>
+            <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
+            <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
+            </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">

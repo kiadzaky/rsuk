@@ -92,9 +92,9 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
           <div class="tab-content custom-menu-content">
             <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
               <ul class="notika-main-menu-dropdown">
-                <li><a href="index.php">Ambulance Darurat</a>
+                <li><a href="ambulance-darurat.php">Ambulance Darurat</a>
                 </li>
-                <li><a href="index.php">Penjemputan Jenazah</a>
+                <li><a href="penjemputan-jenazah.php">Penjemputan Jenazah</a>
                 </li>
               </ul>
             </div>
