@@ -27,7 +27,7 @@
                         </div>
                         <div id="pasien" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Data Pasien</a>
+                                <li><a href="../pasien/index_user.php">Data Pasien</a>
                                 </li>
                             </ul>
                         </div>
