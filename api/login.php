@@ -5,7 +5,7 @@
 		$password= $_POST['password'];
 
 	//$sql = "select * from login JOIN akun on login.nik = akun.nik where username = '$username' and password = '$password' ";
-	$sql = "select * from akun where username = '$username' and password = '$password' ";
+	$sql = "select * from akun where username = '$username' and password = '$password' and level = '1' ";
 	$response = mysqli_query($link,$sql);
 	$result=array();
 	$result ['login'] = array();

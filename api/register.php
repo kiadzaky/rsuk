@@ -11,7 +11,7 @@
 		
 		$username = $_POST['username'];
 		$password= $_POST['password'];
-		$level = 'pelanggan';
+		$level = '1';
 
 	$sql = "INSERT INTO `akun` (`nik`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `no_telepon`, `foto`,`username`,`password`, `level`) VALUES ('$nik', '$nama', '$tanggal_lahir', '$alamat', '$jenis_kelamin', '$no_telepon','$foto','$username','$password', '$level')";
 	

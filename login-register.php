@@ -76,10 +76,8 @@
                     <div class="nk-int-st">
                         <input type="password" class="form-control" placeholder="Password" name="password" required="">
                     </div>
-                    <br/>
-                    <br/>
                 </div>
-               <input type="submit" name="submit" class="btn btn-success btn-xs" value="LOGIN" style="color: white; background-color: lightseagreen;">
+               <input type="submit" name="submit" class="notika-icon btn btn-success" value="LOGIN" style="color: black; ">
                 
             </div>
         </form>
@@ -88,7 +86,7 @@
         if(isset($_POST['submit'])){
         $username = mysql_real_escape_string($_POST['username']);
         $password = mysql_real_escape_string($_POST['password']);
-        $query = "SELECT * FROM `login` WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT * FROM `akun` WHERE username = '$username' AND password = '$password' and level='admin'";
         $sql = $link->query($query);
         $simpan = mysqli_fetch_array($sql);
         if($simpan['username']==$username and $simpan['password'] == $password){
