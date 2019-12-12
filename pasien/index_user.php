@@ -1,6 +1,6 @@
 <?php
 require '../functions.php';
-$user = query("SELECT * FROM akun");
+$user = query("SELECT * FROM akun where level='1'");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
