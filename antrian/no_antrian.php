@@ -35,7 +35,7 @@
                                 </thead>
                                 <tbody>
                                     <?php 
-                                        include 'config.php';
+                                        include '../config.php';
                                         $query = $link->query("SELECT * FROM `no_antri` ");
                                         $no=1;
                                         while ($row=mysqli_fetch_array($query)) {
