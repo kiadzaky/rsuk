@@ -1,7 +1,9 @@
 <?php
 require 'functions.php';
-$rgs = query("SELECT pasien.no_registrasi,pasien.tanggal,pasien.keluhan,pasien.riwayat_sakit,dokter.nama_dokter,jadwal.jadwal,poli.poli,akun.nama FROM pasien
-JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = akun.nik JOIN poli ON dokter.id_poli = poli.id_poli JOIN jadwal ON dokter.id_jadwal = jadwal.id_jadwal");
+$rgs = query("SELECT no_registrasi,akun.nama,poli.poli,dokter.nama_dokter,pasien.tanggal,pasien.keluhan,pasien.riwayat_sakit FROM `pasien` JOIN akun on akun.nik = pasien.nik 
+JOIN poli on poli.id_poli = pasien.id_poli 
+JOIN dokter on dokter.id_poli = poli.id_poli
+");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -92,9 +94,9 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
           <div class="tab-content custom-menu-content">
             <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
               <ul class="notika-main-menu-dropdown">
-                <li><a href="ambulance-darurat.php">Ambulance Darurat</a>
+                <li><a href="index.php">Ambulance Darurat</a>
                 </li>
-                <li><a href="penjemputan-jenazah.php">Penjemputan Jenazah</a>
+                <li><a href="index.php">Penjemputan Jenazah</a>
                 </li>
               </ul>
             </div>
@@ -205,20 +207,6 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                               </select>
                             </div>
                             <div class="form-group" align="left">
-                              <label>Jadwal</label>
-                              <select name="id_jadwal" id="jadwal" class="form-control" required>
-                                <?php
-                                $sql = "SELECT * FROM jadwal";
-                                $query = mysqli_query($conn, $sql);
-                                while ($row = mysqli_fetch_array($query)) {
-                                  ?>
-                                  <option value="<?php echo $row['id_jadwal'] ?>"><?php echo $row['jadwal']; ?></option>
-                                <?php
-                                }
-                                ?>
-                              </select>
-                            </div>
-                            <div class="form-group" align="left">
                               <label>Keluhan</label>
                               <input type="text" name="keluhan" class="form-control" placeholder="Enter Keluhan Anda" required>
                             </div>
@@ -265,7 +253,6 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                     <th>Poli</th>
                     <th>Dokter</th>
                     <th>Tanggal</th>
-                    <th>Jadwal</th>
                     <th>Keluhan</th>
                     <th>Riwayat Sakit</th>
                     <th>Opsi</th>
@@ -279,7 +266,6 @@ JOIN dokter ON pasien.id_dokter = dokter.id_dokter JOIN akun ON pasien.nik = aku
                       <td><?= $row["poli"]; ?></td>
                       <td><?= $row["nama_dokter"]; ?></td>
                       <td><?= $row["tanggal"]; ?></td>
-                      <td><?= $row["jadwal"]; ?></td>
                       <td><?= $row["keluhan"]; ?></td>
                       <td><?= $row["riwayat_sakit"]; ?></td>
                       <td>
