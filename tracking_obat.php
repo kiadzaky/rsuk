@@ -4,7 +4,7 @@ include 'insertcode.php';
 if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
-  $status    = status_obat(', ', $_POST['status']);
+  $status    = implode(', ', $_POST['status']);
 
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
 
