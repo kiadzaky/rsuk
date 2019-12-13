@@ -1,22 +1,24 @@
 <?php
-require 'config.php';
-$query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, link FROM `req_ambulance` join ambulance on req_ambulance.id_ambulance=ambulance.id_ambulance WHERE status_req = '0' or status_req = '1'");
+require 'functions.php';
+$query = query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, link FROM `req_ambulance` WHERE id_ambulance='AMBL2' and (status_req = '0' or status_req = '1')");
 ?>
 
 <!doctype html>
 <html class="no-js" lang="">
 
-<?php include 'part/head.php' ?>
+<?php include '../part/head.php' ?>
 <head>
-<link rel="stylesheet" type="text/css" href="css/table.css">
-<link rel="stylesheet" type="text/css" href="css/wave/button.css">
+
+<link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="stylesheet" type="text/css" href="../css/table.css">
+<link rel="stylesheet" type="text/css" href="../css/wave/button.css">
 </head>
 <body>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Start Header Top Area -->
-    <?php include 'part/header.php' ?>
+    <?php include '../part/header.php' ?>
     <!-- End Header Top Area -->
 
     <!-- Navbar Horizontal -->
@@ -173,7 +175,6 @@ $query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, kel
                                         <td><?= $row["keluhan"]; ?></td>
                                         <td><?= $row["tanggal"]; ?></td>
                                         <td><?= $row["link"]; ?></td>
-                                        
                                         <td>
                                             <button type="button" id="Btn1" onclick="myFunction()" class="btn btn-danger btn-sm">Terima</button>
                                         </td>
@@ -181,6 +182,15 @@ $query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, kel
                                             <button disabled="disabled" type="button" id="Btn2" class="btn btn-success btn-sm">Selesai</button>
                                         </td>                                       
                                         </tr>
+
+                                        <script>
+                                            function myFunction() {
+                                            var y = document.getElementById("Btn2");
+                                            y.disabled = false;
+                                            var x = document.getElementById("Btn1");
+                                            x.disabled = true;}
+                                        </script>
+
                                         <?php $i++; ?>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -192,19 +202,9 @@ $query = $link->query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, kel
     <!-- Normal Table area End-->
 
     <!-- Start Footer area-->
-    <?php include 'part/footer.php' ?>
+    <?php include '../part/footer.php' ?>
     <!-- End Footer area-->
-     <?php include 'part/javascript.php' ?>
-     <script>
-        function myFunction() {
-        var y = document.getElementById("Btn2");
-        y.disabled = false;
-        var x = document.getElementById("Btn1");
-        x.disabled = true;
-    
-    }
-    </script>
+    <?php include '../part/javascript.php' ?>
 
 </body>
-
 </html>
