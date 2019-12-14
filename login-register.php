@@ -90,7 +90,7 @@
         $sql = $link->query($query);
         $simpan = mysqli_fetch_array($sql);
         if($simpan['username']==$username and $simpan['password'] == $password){
-            header('location: inbox.html');
+            header('location: antrian/');
         }else{
             print('SALAH PASSWORD');
         } 
