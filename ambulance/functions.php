@@ -10,4 +10,5 @@ function query($query){
     }
     return $rows;
 }
+
 ?>
