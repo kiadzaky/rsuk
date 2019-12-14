@@ -49,7 +49,7 @@
                         </div>
                         <div id="dokter" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Input Data Dokter</a>
+                                <li><a href="../dokter/index_dokter.php">Input Data Dokter</a>
                                 </li>
                             </ul>
                         </div>
