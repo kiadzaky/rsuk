@@ -176,19 +176,26 @@ $query = query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, l
                                         <td><?= $row["tanggal"]; ?></td>
                                         <td><?= $row["link"]; ?></td>
                                         <td>
-                                            <button type="button" id="Btn1" onclick="myFunction()" class="btn btn-danger btn-sm">Terima</button>
+                                            <button type="button" id="Btn1" onclick="myFunction()" class="btn btn-danger">Terima</button>
                                         </td>
                                         <td>
-                                            <button disabled="disabled" type="button" id="Btn2" class="btn btn-success btn-sm">Selesai</button>
+                                            <button type="button" id="Btn2" onclick="myFunction()" class="btn btn-success">Selesai</button>
                                         </td>                                       
                                         </tr>
 
                                         <script>
+                                            var Btn1 = document.getElementById('Btn1');
+                                                Btn2 = document.getElementById('Btn2');
                                             function myFunction() {
-                                            var y = document.getElementById("Btn2");
-                                            y.disabled = false;
-                                            var x = document.getElementById("Btn1");
-                                            x.disabled = true;}
+                                                if (Btn1.style.display === "block"){
+                                                    Btn1.style.display = "none";
+                                                    Btn2.style.display = "block";
+                                                } 
+                                                else {
+                                                    Btn1.style.display = "none";
+                                                    Btn2.style.display = "block";
+                                                }
+                                            }
                                         </script>
 
                                         <?php $i++; ?>
