@@ -13,7 +13,7 @@
                                         <li><a href="index.php">Penjemputan Jenazah</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#democrou" href="#">Tracking Obat</a>
+                                <li><a data-toggle="collapse" data-target="#democrou" href="#">Tracsking Obat</a>
                                     <ul id="democrou" class="collapse dropdown-header-top">
                                         <li><a href="index.php">Input Data Obat</a></li>
                                         <li><a href="index.php">History Obat</a></li>

@@ -34,17 +34,16 @@
                     
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Ambulance Darurat</a>
+                                <li><a href="../ambulance/ambulance-darurat.php">Ambulance Darurat</a>
                                 </li>
-                                <li><a href="index.php">Penjemputan Jenazah</a>
+                                <li><a href="../penjemputan-jenazah.php">Penjemputan Jenazah</a>
                                 </li>
                             </ul>
                         </div>
                         <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Input Data Obat</a>
-                                </li>
-                                <li><a href="index.php">History Obat</a>
+
+                                <li><a href="../tracking_obat/tracking_obat.php">History Obat</a>
                                 </li>
                             </ul>
                         </div>
@@ -56,11 +55,11 @@
                         </div>
                         <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Laporan Registrasi Pasien</a>
+                                <li><a href="../laporan/laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
                                 </li>
-                                <li><a href="index.php">Laporan Tracking Obat</a>
+                                <li><a href="../laporan/laporanobat.php">Laporan Tracking Obat</a>
                                 </li>
-                                <li><a href="index.php">Laporan Ambulance</a>
+                                <li><a href="../laporan/laporan_ambulan.php">Laporan Ambulance</a>
                                 </li>
                             </ul>
                         </div>

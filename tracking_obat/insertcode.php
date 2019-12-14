@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_rsuk");
+$conn = mysqli_connect("localhost","root","kkhia1","db_rsuk");
 $db = mysqli_select_db($conn,'db_rsuk');
 if(isset($_POST['insertdata']))
 {
