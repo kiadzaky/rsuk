@@ -90,7 +90,7 @@
         $sql = $link->query($query);
         $simpan = mysqli_fetch_array($sql);
         if($simpan['username']==$username and $simpan['password'] == $password){
-            header('location: antrian/');
+            header('location: index/?antrian=index');
         }else{
             print('SALAH PASSWORD');
         } 
