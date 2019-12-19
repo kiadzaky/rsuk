@@ -83,6 +83,7 @@
         </form>
         <?php 
         include 'config.php';
+        session_start();
         if(isset($_POST['submit'])){
         $username = mysql_real_escape_string($_POST['username']);
         $password = mysql_real_escape_string($_POST['password']);
@@ -90,7 +91,10 @@
         $sql = $link->query($query);
         $simpan = mysqli_fetch_array($sql);
         if($simpan['username']==$username and $simpan['password'] == $password){
+            $_SESSION['nik'] = $simpan['nik'];
+            $_SESSION['username'] = $simpan['username'];
             header('location: index/?antrian=index');
+
         }else{
             print('SALAH PASSWORD');
         } 

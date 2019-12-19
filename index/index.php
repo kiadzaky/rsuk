@@ -1,4 +1,8 @@
     <?php
+session_start();
+if($_SESSION['nik']!=null){
+
+
     if(isset($_GET['antrian'])){
         if($_GET['antrian']=='index'){
             include '../antrian/index.php';
@@ -49,5 +53,7 @@
             include '../laporan/laporan_ambulan.php';
         }
     }
-
-    ?>
+}else{
+    header('location: ../login-register.php');
+}
+?>
