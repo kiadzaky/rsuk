@@ -1,10 +1,6 @@
 <?php
 require '../functions.php';
-$dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,jadwal.jadwal FROM `hari_kerja_dokter` 
-JOIN dokter ON hari_kerja_dokter.id_dokter = dokter.id_dokter 
-JOIN jadwal ON hari_kerja_dokter.id_jadwal = jadwal.id_jadwal 
-JOIN daftar_hari ON hari_kerja_dokter.id_hari = daftar_hari.id_hari
-JOIN poli ON poli.id_poli = dokter.id_poli");
+$dr = query("SELECT * FROM `dokter` JOIN jadwal ON dokter.id_jadwal = jadwal.id_jadwal JOIN poli on dokter.id_poli = poli.id_poli");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -122,7 +118,7 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
                       $char = "DR";
                       $id_dokter = $char . sprintf("%03s", $noUrut);
                       ?>
-                      <form action="insertdokter.php" method="POST">
+                      <form action="../dokter/insertdokter.php" method="POST">
                         <div class="modal-body">
                           <div class="form-group" align="left">
                             <label>ID Dokter</label>
@@ -131,10 +127,6 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
                           <div class="form-group" align="left">
                             <label>Nama Dokter</label>
                             <input type="text" name="nama_dokter" class="form-control" placeholder="Enter Nama Dokter" required>
-                          </div>
-                          <div class="form-group" align="left">
-                            <label>No Hp</label>
-                            <input type="text" name="no_hp" class="form-control" placeholder="Enter No Hp" required>
                           </div>
                           <div class="form-group" align="left">
                             <label>Poli</label>
@@ -151,18 +143,26 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
                             </select>
                           </div>
                           <div class="form-group" align="left">
-                            <label>Jadwal</label>
+                            <label>Hari</label>
                             <select name="id_jadwal" id="jadwal" class="form-control" required>
                               <?php
                               $sql = "SELECT * FROM jadwal";
                               $query = mysqli_query($conn, $sql);
                               while ($row = mysqli_fetch_array($query)) {
                                 ?>
-                                <option value="<?php echo $row['id_jadwal'] ?>"><?php echo $row['jadwal']; ?></option>
+                                <option value="<?php echo $row['id_jadwal'] ?>"><?php echo $row['hari']; ?> &nbsp <?php echo $row['mulai']; ?> &nbsp <?php echo $row['selesai']; ?></option>
                               <?php
                               }
                               ?>
                             </select>
+                          </div>
+                            <div class="form-group" align="left">
+                             <label>Keterangan</label>
+                            <select type="text" name="keterangan" id="keterangan" class="form-control" required="">
+                              <option value="umum">Umum</option>
+                              <option value="bpjs">BPJS</option>
+                              <option value="umumdanbpjs">Umum dan BPJS</option>
+                            </select> 
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -195,24 +195,26 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
               <table id="data-table-basic" class="table table-striped">
                 <thead>
                   <tr>
-                    <th>ID Dokter</th>
                     <th>Nama Dokter</th>
-                    <th>No.Hp</th>
-                    <th>Poli</th>
-                    <th>Jadwal</th>
+                    <th>Spesialistik</th>
+                    <th>Hari</th>
+                    <th>Mulai</th>
+                    <th>Selesai</th>
+                    <th>Keterangan</th>
                     <th>Opsi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($dr as $row) : ?>
                     <tr>
-                      <td><?= $row["id_dokter"]; ?></td>
                       <td><?= $row["nama_dokter"]; ?></td>
-                      <td><?= $row["no_hp"]; ?></td>
+                      <td><?= $row["hari"]; ?></td>
+                      <td><?= $row["mulai"]; ?></td>
+                      <td><?= $row["selesai"]; ?></td>
                       <td><?= $row["poli"]; ?></td>
-                      <td><?= $row["jadwal"]; ?></td>
+                      <td><?= $row["keterangan"]; ?></td>
                       <td>
-                        <button type="button" class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit "></i>Edit</button>
+                        <a href="#editModal" data-toggle="modal" id="<?=$row['id_dokter']?>"><button type="button" class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit "></i>Edit</button></a>
                         <button type="button" class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
                       </td>
                     </tr>
@@ -247,7 +249,7 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
           </button>
         </div>
         <form role="form" action="updatedokter.php" method="POST">
-          <div class="modal-body">
+          <div class="modal-body" id="data_dokter">
             <div class="form-group" align="left">
               <label>ID Dokter</label>
               <input type="text" name="id_dokter" id="id_dokter" class="form-control" readonly>
@@ -257,26 +259,30 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
               <input type="text" name="nama_dokter" id="nama_dokter" class="form-control" placeholder="Enter Nama Dokter" required>
             </div>
             <div class="form-group" align="left">
-              <label>No Hp</label>
-              <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Enter No Hp" required>
-            </div>
-            <div class="form-group" align="left">
               <label for="id_poli">Poli</label>
               <input type="text" name="poli" id="id_poli" class="form-control" value="<?php echo $row['poli'] ?>" readonly>
             </div>
             <div class="form-group" align="left">
               <label>Jadwal</label>
-              <select name="id_jadwal" id="jadwal" class="form-control" value="<?php echo $row['jadwal'] ?>" required>
+              <select name="id_jadwal" id="id_jadwal" class="form-control" value="<?php echo $row['jadwal'] ?>" required>
                 <?php
                 $sql = "SELECT * FROM jadwal";
                 $query = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($query)) {
                   ?>
-                  <option value="<?php echo $row['id_jadwal'] ?>"><?php echo $row['jadwal']; ?></option>
+                  <option value="<?php echo $row['id_jadwal'] ?>"><?php echo $row['hari']; ?> &nbsp <?php echo $row['mulai']; ?> &nbsp <?php echo $row['selesai']; ?></option>
                 <?php
                 }
                 ?>
               </select>
+            </div>
+            <div class="form-group" align="left">
+              <label>Keterangan</label>
+               <select type="text" name="keterangan" id="keterangan" class="form-control" required="">
+                  <option value="umum">Umum</option>
+                  <option value="bpjs">BPJS</option>
+                  <option value="umumdanbpjs">Umum dan BPJS</option>
+                </select> 
             </div>
           </div>
           <div class="modal-footer">
@@ -382,7 +388,7 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
   <!-- tawk chat JS
 		============================================ -->
   <script src="../js/tawk-chat.js"></script>
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       $('.deletebtn').on('click', function() {
         $('#deletemodal').modal('show');
@@ -406,11 +412,33 @@ JOIN poli ON poli.id_poli = dokter.id_poli");
         console.log(data);
         $('#id_dokter').val(data[0]);
         $('#nama_dokter').val(data[1]);
-        $('#no_hp').val(data[2]);
-        $('#id_poli').val(data[3]);
-        $('#jadwal').val(data[4]);
+        $('#id_poli').val(data[2]);
+        $('#jadwal').val(data[3]);
+        $('#keterangan').val(data[4]);
       });
     });
+  </script> -->
+    <script>
+  // ini menyiapkan dokumen agar siap grak :)
+  $(document).ready(function(){
+    // yang bawah ini bekerja jika tombol lihat data (class="view_data") di klik
+    $('.btn').click(function(){
+      // membuat variabel id, nilainya dari attribut id pada button
+      // id="'.$row['id'].'" -> data id dari database ya sob, jadi dinamis nanti id nya
+      var id = $(this).attr("id");
+      
+      // memulai ajax
+      $.ajax({
+        url: 'view.php',  // set url -> ini file yang menyimpan query tampil detail data siswa
+        method: 'post',   // method -> metodenya pakai post. Tahu kan post? gak tahu? browsing aja :)
+        data: {id:id},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
+        success:function(data){   // kode dibawah ini jalan kalau sukses
+          $('#data_dokter').html(data);  // mengisi konten dari -> <div class="modal-body" id="data_siswa">
+          $('#editModal').modal("show");  // menampilkan dialog modal nya
+        }
+      });
+    });
+  });
   </script>
 </body>
 
