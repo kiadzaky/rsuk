@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_rsuk");
+$conn = mysqli_connect("localhost","root","","db_rsuk_ambl");
 
 function query($query){
     global $conn;
