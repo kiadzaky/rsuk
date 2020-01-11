@@ -19,48 +19,47 @@
                     <div class="tab-content custom-menu-content">
                         <div id="antrian" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="no_antrian.php">Ketersediaan Antrian</a>
+                                <li><a href="?antrian=no_antrian">Ketersediaan Antrian</a>
                                 </li>
-                                <li><a href="antrian_pasien.php">Antrian</a>
+                                <li><a href="?antrian=antrian_pasien">Antrian</a>
                                 </li>
                             </ul>
                         </div>
                         <div id="pasien" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="../pasien/index_user.php">Data Pasien</a>
+                                <li><a href="?pasien=index">Data Pasien</a>
                                 </li>
                             </ul>
                         </div>
                     
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Ambulance Darurat</a>
+                                <li><a href="?ambulance=darurat">Ambulance Darurat</a>
                                 </li>
-                                <li><a href="index.php">Penjemputan Jenazah</a>
+                                <li><a href="?ambulance=jenazah">Penjemputan Jenazah</a>
                                 </li>
                             </ul>
                         </div>
                         <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Input Data Obat</a>
-                                </li>
-                                <li><a href="index.php">History Obat</a>
+
+                                <li><a href="?obat=index">History Obat</a>
                                 </li>
                             </ul>
                         </div>
                         <div id="dokter" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Input Data Dokter</a>
+                                <li><a href="?dokter=index">Input Data Dokter</a>
                                 </li>
                             </ul>
                         </div>
                         <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Laporan Registrasi Pasien</a>
+                                <li><a href="?laporan=registrasi">Laporan Registrasi Pasien</a>
                                 </li>
-                                <li><a href="index.php">Laporan Tracking Obat</a>
+                                <li><a href="?laporan=obat">Laporan Tracking Obat</a>
                                 </li>
-                                <li><a href="index.php">Laporan Ambulance</a>
+                                <li><a href="?laporan=ambulance">Laporan Ambulance</a>
                                 </li>
                             </ul>
                         </div>

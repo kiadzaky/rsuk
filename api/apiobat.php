@@ -1,5 +1,5 @@
 <?php
-	require_once 'konek.php';
+	require_once '../konek.php';
 	$query = "select * from status_obat";
 	$sql = mysqli_query($link, $query);
 	$ray = array();

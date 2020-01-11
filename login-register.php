@@ -83,14 +83,18 @@
         </form>
         <?php 
         include 'config.php';
+        session_start();
         if(isset($_POST['submit'])){
-        $username = mysql_real_escape_string($_POST['username']);
-        $password = mysql_real_escape_string($_POST['password']);
+        $username = mysqli_real_escape_string($link,$_POST['username']);
+        $password = mysqli_real_escape_string($link,$_POST['password']);
         $query = "SELECT * FROM `akun` WHERE username = '$username' AND password = '$password' and level='admin'";
         $sql = $link->query($query);
         $simpan = mysqli_fetch_array($sql);
         if($simpan['username']==$username and $simpan['password'] == $password){
-            header('location: inbox.html');
+            $_SESSION['nik'] = $simpan['nik'];
+            $_SESSION['username'] = $simpan['username'];
+            header('location: index/?antrian=index');
+
         }else{
             print('SALAH PASSWORD');
         } 

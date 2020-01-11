@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../functions.php';
 include 'insertcode.php';
 if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];

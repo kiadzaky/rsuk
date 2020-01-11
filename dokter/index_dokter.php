@@ -1,6 +1,10 @@
 <?php
 require '../functions.php';
-$dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,jadwal.jadwal FROM dokter JOIN poli ON dokter.id_poli = poli.id_poli JOIN jadwal ON dokter.id_jadwal = jadwal.id_jadwal");
+$dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,jadwal.jadwal FROM `hari_kerja_dokter` 
+JOIN dokter ON hari_kerja_dokter.id_dokter = dokter.id_dokter 
+JOIN jadwal ON hari_kerja_dokter.id_jadwal = jadwal.id_jadwal 
+JOIN daftar_hari ON hari_kerja_dokter.id_hari = daftar_hari.id_hari
+JOIN poli ON poli.id_poli = dokter.id_poli");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -72,54 +76,7 @@ $dr = query("SELECT dokter.id_dokter,dokter.nama_dokter,dokter.no_hp,poli.poli,j
   <?php include '../part/navbar_v.php' ?>
   <!-- Navbar vertikal end -->
   <!-- Navbar horizontal start-->
-  <div class="main-menu-area mg-tb-40">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-            <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
-            </li>
-            <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
-            </li>
-            <li><a href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
-            </li>
-            <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
-            </li>
-            <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
-            </li>
-          </ul>
-          <div class="tab-content custom-menu-content">
-            <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
-              <ul class="notika-main-menu-dropdown">
-                <li><a href="index.php">Ambulance Darurat</a>
-                </li>
-                <li><a href="index.php">Penjemputan Jenazah</a>
-                </li>
-              </ul>
-            </div>
-            <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
-              <ul class="notika-main-menu-dropdown">
-                <li><a href="index_dokter.php">Data Dokter</a>
-                </li>
-                <li><a href="index_user.php">Data User</a>
-                </li>
-              </ul>
-            </div>
-            <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
-              <ul class="notika-main-menu-dropdown">
-                <li><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
-                </li>
-                <li><a href="laporanobat.php">Laporan Tracking Obat</a>
-                </li>
-                <li><a href="laporan_ambulan.php">Laporan Ambulance</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php include '../part/navbar_h.php' ?>
   <!-- Navbar horizontal End-->
   <!-- Tambah data dokter start-->
   <div class="breadcomb-area">
