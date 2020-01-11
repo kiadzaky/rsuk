@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","kkhia1","db_rsuk");
+$conn = mysqli_connect("localhost","root","","db_rsuk");
 $db = mysqli_select_db($conn,'db_rsuk');
 $query = "SELECT max(no_resep) as maxKode FROM status_obat";
 $hasil = mysqli_query($conn,$query);
