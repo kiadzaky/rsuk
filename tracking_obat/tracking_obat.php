@@ -5,9 +5,7 @@ if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
   $status    = implode(', ', $_POST['status']);
-
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
-
   header('location:tracking_obat.php?sukse');
 }
 $obt = query("SELECT * FROM status_obat");
@@ -99,10 +97,10 @@ $obt = query("SELECT * FROM status_obat");
                     <div class="tab-content custom-menu-content">
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="ambulance-darurat.php">Ambulance Darurat</a>
-                </li>
-                <li><a href="penjemputan-jenazah.php">Penjemputan Jenazah</a>
-                </li>
+                              <li><a href="ambulance-darurat.php">Ambulance Darurat</a>
+                              </li>
+                          <li><a href="penjemputan-jenazah.php">Penjemputan Jenazah</a>
+                              </li>
                             </ul>
                         </div>
                         <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -346,7 +344,6 @@ $obt = query("SELECT * FROM status_obat");
             <button type="submit" name ="deletedata" class="btn btn-danger"> Yes </button>
           </div>
           </form>
-
         </div>
       </div>
     </div>
