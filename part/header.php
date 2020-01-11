@@ -24,7 +24,7 @@
                                        <a href="#"><h2>Profil</h2></a>
                                     </div>
                                     <div class="hd-mg-tt">
-                                        <a href="#"><h2>Log in</h2></a>
+                                        <a href="../logout.php"><h2>Log Out</h2></a>
                                     </div>
                                 </div>
                             </li>
