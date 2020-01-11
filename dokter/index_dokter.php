@@ -214,8 +214,8 @@ $dr = query("SELECT * FROM `dokter` JOIN jadwal ON dokter.id_jadwal = jadwal.id_
                       <td><?= $row["poli"]; ?></td>
                       <td><?= $row["keterangan"]; ?></td>
                       <td>
-                        <a href="#editModal" data-toggle="modal" id="<?=$row['id_dokter']?>"><button type="button" class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit "></i>Edit</button></a>
-                        <button type="button" class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
+                        <a href="../dokter/updatedokter.php?id=<?=$row['id_dokter']?>"></a><button type="button" class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit "></i>Edit</button>
+                        <a href="../dokter/deletedokter.php?id=<?=$row['id_dokter']?>"><button type="button" class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -248,7 +248,7 @@ $dr = query("SELECT * FROM `dokter` JOIN jadwal ON dokter.id_jadwal = jadwal.id_
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form role="form" action="updatedokter.php" method="POST">
+        <form action="updatedokter.php" method="POST">
           <div class="modal-body" id="data_dokter">
             <div class="form-group" align="left">
               <label>ID Dokter</label>
@@ -294,30 +294,6 @@ $dr = query("SELECT * FROM `dokter` JOIN jadwal ON dokter.id_jadwal = jadwal.id_
     </div>
   </div>
   <!-- Edit data dokter End -->
-  <!-- Hapus data dokter start -->
-  <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete Data Dokter</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form role="form" action="deletedokter.php" method="POST">
-          <div class="modal-body">
-            <input type="hidden" name="delete_id" id="delete_id">
-            <h4>Apakah anda yakin ingin menghapus data ini? </h4>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"> No </button>
-            <button type="submit" name="deletedata" class="btn btn-primary"> Yes </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- Hapus data dokter end -->
   <!-- Start Footer area-->
   <?php include '../part/footer.php' ?>
   <!-- End Footer area-->
@@ -388,19 +364,6 @@ $dr = query("SELECT * FROM `dokter` JOIN jadwal ON dokter.id_jadwal = jadwal.id_
   <!-- tawk chat JS
 		============================================ -->
   <script src="../js/tawk-chat.js"></script>
-  <!-- <script>
-    $(document).ready(function() {
-      $('.deletebtn').on('click', function() {
-        $('#deletemodal').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-          return $(this).text();
-        }).get();
-        console.log(data);
-        $('#delete_id').val(data[0]);
-      });
-    });
-  </script>
   <script>
     $(document).ready(function() {
       $('.editbtn').on('click', function() {
@@ -417,28 +380,6 @@ $dr = query("SELECT * FROM `dokter` JOIN jadwal ON dokter.id_jadwal = jadwal.id_
         $('#keterangan').val(data[4]);
       });
     });
-  </script> -->
-    <script>
-  // ini menyiapkan dokumen agar siap grak :)
-  $(document).ready(function(){
-    // yang bawah ini bekerja jika tombol lihat data (class="view_data") di klik
-    $('.btn').click(function(){
-      // membuat variabel id, nilainya dari attribut id pada button
-      // id="'.$row['id'].'" -> data id dari database ya sob, jadi dinamis nanti id nya
-      var id = $(this).attr("id");
-      
-      // memulai ajax
-      $.ajax({
-        url: 'view.php',  // set url -> ini file yang menyimpan query tampil detail data siswa
-        method: 'post',   // method -> metodenya pakai post. Tahu kan post? gak tahu? browsing aja :)
-        data: {id:id},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
-        success:function(data){   // kode dibawah ini jalan kalau sukses
-          $('#data_dokter').html(data);  // mengisi konten dari -> <div class="modal-body" id="data_siswa">
-          $('#editModal').modal("show");  // menampilkan dialog modal nya
-        }
-      });
-    });
-  });
   </script>
 </body>
 
