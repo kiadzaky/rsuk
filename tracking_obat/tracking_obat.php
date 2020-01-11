@@ -5,9 +5,7 @@ if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
   $status    = implode(', ', $_POST['status']);
-
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
-
   header('location:tracking_obat.php?sukse');
 }
 $obt = query("SELECT * FROM status_obat");
@@ -80,7 +78,54 @@ $obt = query("SELECT * FROM status_obat");
     <?php include '../part/navbar_v.php' ?>
     <!-- Navbar vertikal end -->
     <!-- Navbar horizontal start-->
-    <?php include '../part/navbar_h.php' ?>
+    <div class="main-menu-area mg-tb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                        <li><a href="registrasi_pasien.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
+                        </li>
+                        <li><a  href="tracking_obat.php"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-form"></i> Data Master</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content custom-menu-content">
+                        <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                              <li><a href="ambulance-darurat.php">Ambulance Darurat</a>
+                              </li>
+                          <li><a href="penjemputan-jenazah.php">Penjemputan Jenazah</a>
+                              </li>
+                            </ul>
+                        </div>
+                        <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="index_dokter.php">Data Dokter</a>
+                                </li>
+                                <li><a href="index_user.php">Data User</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="laporanregistrasipasien.php">Laporan Registrasi Pasien</a>
+                                </li>
+                                <li><a href="laporanobat.php">Laporan Tracking Obat</a>
+                                </li>
+                                <li><a href="laporan_ambulan.php">Laporan Ambulance</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Navbar horizontal End-->
 	<!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
@@ -299,7 +344,6 @@ $obt = query("SELECT * FROM status_obat");
             <button type="submit" name ="deletedata" class="btn btn-danger"> Yes </button>
           </div>
           </form>
-
         </div>
       </div>
     </div>

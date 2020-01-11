@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
-$rgs = query("SELECT no_registrasi,akun.nama,poli.poli,dokter.nama_dokter,pasien.tanggal,pasien.keluhan,pasien.riwayat_sakit FROM `pasien` JOIN akun on akun.nik = pasien.nik 
-JOIN poli on poli.id_poli = pasien.id_poli 
+$rgs = query("SELECT no_registrasi,akun.nama,poli.poli,dokter.nama_dokter,pasien.tanggal,pasien.keluhan,pasien.riwayat_sakit FROM `pasien` JOIN akun on akun.nik = pasien.nik
+JOIN poli on poli.id_poli = pasien.id_poli
 JOIN dokter on dokter.id_poli = poli.id_poli
 ");
 ?>
