@@ -284,7 +284,7 @@ $obt = query("SELECT * FROM status_obat");
                 <div class="form-group">
                     <label>No Resep</label>
                     <div class="nk-int-st">
-                        <input type="text" name="no_resep" id="no_resep" class="form-control input-sm" placeholder="Input No Resep" >
+                        <input type="text" name="no_resep" id="no_resep" class="form-control input-sm" placeholder="Input No Resep" readonly>
                     </div>
                 </div>
             </div>

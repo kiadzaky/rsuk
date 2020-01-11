@@ -96,7 +96,7 @@ $query = query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, l
                                         </td>
                                         <td>
                                             <button type="button" id="Btn2" onclick="myFunction()" class="btn btn-success">Selesai</button>
-                                        </td>                                       
+                                        </td>
                                         </tr>
 
                                         <script>
@@ -106,7 +106,7 @@ $query = query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, l
                                                 if (Btn1.style.display === "block"){
                                                     Btn1.style.display = "none";
                                                     Btn2.style.display = "block";
-                                                } 
+                                                }
                                                 else {
                                                     Btn1.style.display = "none";
                                                     Btn2.style.display = "block";
