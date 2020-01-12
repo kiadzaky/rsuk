@@ -40,6 +40,9 @@ if($_SESSION['nik']!=null){
         if($_GET['dokter']=='index'){
             include '../dokter/index_dokter.php';
         }
+        elseif($_GET['dokter']=='tambah_jadwal'){
+            include '../dokter/index_jadwal.php';
+        }
     }
 
     if (isset($_GET['laporan'])) {
