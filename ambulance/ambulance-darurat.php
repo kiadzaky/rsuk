@@ -1,4 +1,8 @@
-<?php
+<?php 
+session_start();
+error_reporting(0);
+if($_SESSION['nik']==null){
+
 require 'functions.php';
 $query = query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, link FROM `req_ambulance` WHERE id_ambulance='AMBL2' and (status_req = '0' or status_req = '1')");
 ?>
@@ -216,3 +220,10 @@ $query = query("SELECT id_req_ambulance, nik, alamat, no_hp, tanggal, keluhan, l
 
 </body>
 </html>
+<?php
+}else{
+echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?antrian=index");
+    </script>';
+}
+?>
