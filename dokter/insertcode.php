@@ -6,7 +6,7 @@ if(isset($_POST['insertdata']))
   $hari  = $_POST['hari'];
   $mulai  = $_POST['mulai'];
   $selesai    = $_POST['selesai'];
-  $query = "INSERT INTO jadwal ('',`hari`,`mulai`,`selesai`) VALUES ('$hari','$mulai','$selesai')";
+  $query = "INSERT INTO `jadwal` (`id_jadwal`, `hari`, `mulai`, `selesai`) VALUES (NULL, '$hari', '$mulai', '$selesai')";
   $query_run = mysqli_query($conn, $query);
   if($query_run)
   {

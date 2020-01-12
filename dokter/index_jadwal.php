@@ -1,14 +1,6 @@
-@@ -1,368 +0,0 @@
 <?php
 require '../functions.php';
 include 'insertcode.php';
-if (isset($_POST['insertdata'])){
-  $hari  = $_POST['hari'];
-  $mulai    = $_POST['mulai'];
-  $selesai    = $_POST['selesai'];
-  mysqli_query($conn, "INSERT INTO jadwal VALUES ('','$hari,'$mulai','$selesai')");
-  header('location:index_jadwal.php?sukse');
-}
 $jdw = query("SELECT * FROM jadwal");
 ?>
 <!doctype html>
@@ -170,17 +162,19 @@ $jdw = query("SELECT * FROM jadwal");
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php foreach ($jdw as $row) : ?>
+                                  <?php 
+                                  $i=1;
+                                  foreach ($jdw as $row) : ?>
                                     <tr>
-                                        <td><?= $row['id_jadwal']; ?></td>
+                                        <td><?= $i ?></td>
                                         <td><?= $row['hari'];?></td>
                                         <td><?= $row['mulai'];?></td>
                                         <td><?= $row['selesai'];?></td>
                                           <td> <button type="button"class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit"></i>edit</button>
-                                           <button type="button"class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
+                                          <a href="deletecode.php?id=<?=$row['id_jadwal']?>" onclick=”return confirm(‘Yakin Hapus?’)”><button type="button"class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>delete</button></a>
                                         </td>
                                     </tr>
-                                  <?php endforeach; ?>
+                                  <?php $i++; endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -240,115 +234,13 @@ $jdw = query("SELECT * FROM jadwal");
         </div>
       </div>
     </div>
-    <!-- akhir edit modal -->
-    <!-- awal delete modal -->
-    <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete Jadwal</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-  <form role="form" action="deletecode.php" method="POST">
-          <div class="modal-body">
-              <input type="hidden" name="delete_id" id="delete_id">
-              <h4>Apakah anda yakin ingin menghapus data ini? </h4>
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"> No </button>
-            <button type="submit" name ="deletedata" class="btn btn-danger"> Yes </button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- akhir delete modal -->
     <!-- Data Table area End-->
     <!-- Start Footer area-->
    <?php include '../part/footer.php' ?>
     <!-- End Footer area-->
     <!-- jquery
 		============================================ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="../js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
-		============================================ -->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- wow JS
-		============================================ -->
-    <script src="../js/wow.min.js"></script>
-    <!-- price-slider JS
-		============================================ -->
-    <script src="../js/jquery-price-slider.js"></script>
-    <!-- owl.carousel JS
-		============================================ -->
-    <script src="../js/owl.carousel.min.js"></script>
-    <!-- scrollUp JS
-		============================================ -->
-    <script src="../js/jquery.scrollUp.min.js"></script>
-    <!-- meanmenu JS
-		============================================ -->
-    <script src="../js/meanmenu/jquery.meanmenu.js"></script>
-    <!-- counterup JS
-		============================================ -->
-    <script src="../js/counterup/jquery.counterup.min.js"></script>
-    <script src="../js/counterup/waypoints.min.js"></script>
-    <script src="../js/counterup/counterup-active.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- sparkline JS
-		============================================ -->
-    <script src="../js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="../js/sparkline/sparkline-active.js"></script>
-    <!-- flot JS
-		============================================ -->
-    <script src="../js/flot/jquery.flot.js"></script>
-    <script src="../js/flot/jquery.flot.resize.js"></script>
-    <script src="../js/flot/flot-active.js"></script>
-    <!-- knob JS
-		============================================ -->
-    <script src="../js/knob/jquery.knob.js"></script>
-    <script src="../js/knob/jquery.appear.js"></script>
-    <script src="../js/knob/knob-active.js"></script>
-    <!--  Chat JS
-		============================================ -->
-    <script src="../js/chat/jquery.chat.js"></script>
-    <!--  todo JS
-		============================================ -->
-    <script src="../js/todo/jquery.todo.js"></script>
-	<!--  wave JS
-		============================================ -->
-    <script src="../js/wave/waves.min.js"></script>
-    <script src="../js/wave/wave-active.js"></script>
-    <!-- plugins JS
-		============================================ -->
-    <script src="../js/plugins.js"></script>
-    <!-- Data Table JS
-		============================================ -->
-    <script src="../js/data-table/jquery.dataTables.min.js"></script>
-    <script src="../js/data-table/data-table-act.js"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="../js/main.js"></script>
-	<!-- tawk chat JS
-		============================================ -->
-    <script src="../js/tawk-chat.js"></script>
-<script>
-$(document).ready(function(){
-  $('.deletebtn').on('click', function(){
-      $('#deletemodal').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-          return $(this).text();
-        }).get();
-        console.log(data);
-        $('#delete_id').val(data[0]);
-  });
-});
-</script>
+    <?php require '../part/javascript.php'; ?>
     <script>
     $(document).ready(function(){
       $('.editbtn').on('click', function(){
