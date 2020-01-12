@@ -1,3 +1,10 @@
+<?php 
+session_start();
+error_reporting(0);
+if($_SESSION['nik']==null){
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -230,3 +237,10 @@
 </body>
 
 </html>
+<?php
+}else{
+echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?antrian=index");
+    </script>';
+}
+?>
