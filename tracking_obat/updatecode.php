@@ -12,10 +12,14 @@ if(isset($_POST['updatedata']))
   if($query_run)
   {
     echo '<script> alert("Data Update")</script>';
-    header('Location: tracking_obat.php');
+    echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>'; 
   }else
 {
-  echo '<script> alert("Data not Update")</script>';
+  echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>'; 
 }
 }
 ?>

@@ -9,10 +9,14 @@ if(isset($_POST['deletedata']))
   if($query_run)
   {
     echo '<script> alert("Data Delete")</script>';
-    header('Location: tracking_obat.php');
+    echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>'; 
   }else
 {
-  echo '<script> alert("Data not Delete")</script>';
+  echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>'; 
 }
 }
 ?>

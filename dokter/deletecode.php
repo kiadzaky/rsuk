@@ -9,8 +9,9 @@ $db = mysqli_select_db($conn,'db_rsuk');
     echo '<script> alert("Data Delete");
 window.location.replace("http://127.0.0.1/rsuk/index/?dokter=tambah_jadwal");
     </script>';
-    header('Location: index_jadwal.php');
   }else{
-  echo '<script> alert("Data not Delete")</script>';
+  echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?dokter=tambah_jadwal");
+    </script>'; 
 }
 ?>

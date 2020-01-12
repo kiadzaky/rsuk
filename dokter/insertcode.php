@@ -11,7 +11,9 @@ if(isset($_POST['insertdata']))
   if($query_run)
   {
     echo '<script> alert("Data Saved")</script>';
-    header('Location: index_jadwal.php');
+    echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?dokter=index");
+    </script>'; 
   }else
 {
   echo '<script> alert("Data not Saved")</script>';
