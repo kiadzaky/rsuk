@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2020 at 04:02 AM
+-- Generation Time: Jan 12, 2020 at 06:18 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -113,7 +113,7 @@ INSERT INTO `daftar_hari` (`id_hari`, `hari`) VALUES
 (4, 'kamis'),
 (5, 'jumat'),
 (6, 'sabtu'),
-(7, 'sabtu');
+(7, 'minggu');
 
 -- --------------------------------------------------------
 
@@ -124,19 +124,19 @@ INSERT INTO `daftar_hari` (`id_hari`, `hari`) VALUES
 CREATE TABLE `dokter` (
   `id_dokter` varchar(5) NOT NULL,
   `nama_dokter` varchar(30) NOT NULL,
-  `no_hp` varchar(13) NOT NULL,
-  `foto` text NOT NULL,
-  `id_poli` varchar(5) NOT NULL
+  `id_poli` varchar(6) NOT NULL,
+  `id_jadwal` int(11) NOT NULL,
+  `keterangan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dokter`
 --
 
-INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `no_hp`, `foto`, `id_poli`) VALUES
-('DR001', 'drg.Septyono Heriawan,Sp.Perio', '', 'dr-1573432960.jpg', 'POLI1'),
-('DR002', 'dr.Hudoyo,Sp.PD', '', 'dr-1573432960.jpg', 'POLI2'),
-('DR003', 'dr.Sutikno,Sp.JP', '', 'dr-1573744869.jpg', 'POLI3');
+INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `id_poli`, `id_jadwal`, `keterangan`) VALUES
+('DR001', 'dr.Hudoyo', 'POLI1', 1, 'bpjs'),
+('DR002', 'dr.Ali Santosa', 'POLI1', 2, 'Umum'),
+('DR003', 'dr.Atika', 'POLI1', 3, 'BPJS');
 
 -- --------------------------------------------------------
 
@@ -167,18 +167,45 @@ INSERT INTO `hari_kerja_dokter` (`id`, `id_dokter`, `id_hari`, `id_jadwal`) VALU
 --
 
 CREATE TABLE `jadwal` (
-  `id_jadwal` varchar(5) NOT NULL,
-  `jadwal` enum('pagi','siang','malam','') NOT NULL
+  `id_jadwal` int(11) NOT NULL,
+  `hari` varchar(30) NOT NULL,
+  `mulai` varchar(5) NOT NULL,
+  `selesai` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jadwal`
 --
 
-INSERT INTO `jadwal` (`id_jadwal`, `jadwal`) VALUES
-('JDW01', 'pagi'),
-('JDW02', 'siang'),
-('JDW03', 'malam');
+INSERT INTO `jadwal` (`id_jadwal`, `hari`, `mulai`, `selesai`) VALUES
+(1, 'Senin - Jumat', '16.30', '21.00'),
+(2, 'Rabu', '16.30', '21.00'),
+(3, 'Selasa & Kamis', '19.30', '20.30'),
+(4, 'Rabu - Jumat', '09.00', '11.00'),
+(5, 'Senin - Jumat', '14.00', '16.00'),
+(6, 'Jumat', '16.00', '18.00'),
+(7, 'Sabtu & Minggu', '08.00', '10.00'),
+(8, 'Senin - Rabu', '06.00', '08.00'),
+(9, 'Selasa & Kamis', '06.00', '08.00'),
+(10, 'Kamis', '15.00', '17.00'),
+(11, 'Jumat', '06.00', '08.00'),
+(12, 'Rabu & Jumat', '06.00', '08.00'),
+(13, 'Senin - Jumat', '09.00', '11.00'),
+(14, 'Senin - Jumat', '16.30', '18.00'),
+(15, 'Sabtu', '09.00', '11.00'),
+(16, 'Selasa & Kamis', '14.00', '16.00'),
+(17, 'Senin', '19.00', '21.00'),
+(18, 'Selasa & Jumat', '19.00', '21.00'),
+(19, 'Kamis & Jumat', '19.00', '21.00'),
+(20, 'Senin - Jumat', '09.00', '11.00'),
+(21, 'Selasa & Jumat', '14.00', '16.00'),
+(22, 'Senin & Rabu', '19.00', '21.00'),
+(23, 'Selasa & Kamis', '19.00', '21.00'),
+(24, 'Selasa - Kamis', '06.00', '09.00'),
+(25, 'Rabu & Jumat', '14.00', '17.00'),
+(26, 'Senin & Rabu & Jumat', '16.00', '18.00'),
+(27, 'Selasa & Kamis', '09.00', '12.00'),
+(28, 'Selasa & Rabu', '13.00', '15.00');
 
 -- --------------------------------------------------------
 
@@ -235,8 +262,8 @@ INSERT INTO `pasien` (`no_registrasi`, `nik`, `id_poli`, `tanggal`, `keluhan`, `
 --
 
 CREATE TABLE `poli` (
-  `id_poli` varchar(5) NOT NULL,
-  `poli` varchar(20) NOT NULL
+  `id_poli` varchar(6) NOT NULL,
+  `poli` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -244,9 +271,23 @@ CREATE TABLE `poli` (
 --
 
 INSERT INTO `poli` (`id_poli`, `poli`) VALUES
-('POLI1', 'Poli Gigi'),
-('POLI2', 'Poli Rawat Jalan'),
-('POLI3', 'Poli Saraf');
+('POLI1', 'Penyakit Dalam'),
+('POLI10', 'THT'),
+('POLI11', 'Kulit dan Kelamin'),
+('POLI12', 'Anak'),
+('POLI13', 'Bedah Saraf'),
+('POLI14', 'Rehabilitasi Medik'),
+('POLI15', 'Poli Gigi (Spesialis Bedah Mul'),
+('POLI16', 'Poli Gigi (Spesialis Periodonsi)'),
+('POLI17', 'Poli Gigi ( Spesialis Endodonsi)'),
+('POLI2', 'Jantung'),
+('POLI3', 'Orthopedi'),
+('POLI4', 'Bedah Umum'),
+('POLI5', 'Saraf'),
+('POLI6', 'Paru'),
+('POLI7', 'Mata'),
+('POLI8', 'Kandungan '),
+('POLI9', 'Urologi');
 
 -- --------------------------------------------------------
 
@@ -295,29 +336,6 @@ CREATE TABLE `status_obat` (
 INSERT INTO `status_obat` (`id_obat`, `no_resep`, `jml_obat`, `status`) VALUES
 (1, 'NR001', '10', 'belum terproses');
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_jadwal_dokter_poli`
--- (See below for the actual view)
---
-CREATE TABLE `view_jadwal_dokter_poli` (
-`nama_dokter` varchar(30)
-,`foto` text
-,`poli` varchar(20)
-,`hari` varchar(7)
-,`jadwal` enum('pagi','siang','malam','')
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_jadwal_dokter_poli`
---
-DROP TABLE IF EXISTS `view_jadwal_dokter_poli`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jadwal_dokter_poli`  AS  select `dokter`.`nama_dokter` AS `nama_dokter`,`dokter`.`foto` AS `foto`,`poli`.`poli` AS `poli`,`daftar_hari`.`hari` AS `hari`,`jadwal`.`jadwal` AS `jadwal` from ((((`hari_kerja_dokter` join `dokter` on((`hari_kerja_dokter`.`id_dokter` = `dokter`.`id_dokter`))) join `poli` on((`dokter`.`id_poli` = `poli`.`id_poli`))) join `daftar_hari` on((`hari_kerja_dokter`.`id_hari` = `daftar_hari`.`id_hari`))) join `jadwal` on((`hari_kerja_dokter`.`id_jadwal` = `jadwal`.`id_jadwal`))) ;
-
 --
 -- Indexes for dumped tables
 --
@@ -353,7 +371,8 @@ ALTER TABLE `daftar_hari`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`id_dokter`),
-  ADD KEY `id_poli` (`id_poli`);
+  ADD KEY `id_poli` (`id_poli`),
+  ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
 -- Indexes for table `hari_kerja_dokter`
@@ -421,6 +440,12 @@ ALTER TABLE `hari_kerja_dokter`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `jadwal`
+--
+ALTER TABLE `jadwal`
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT for table `status_obat`
 --
 ALTER TABLE `status_obat`
@@ -438,18 +463,11 @@ ALTER TABLE `antrian`
   ADD CONSTRAINT `antrian_ibfk_2` FOREIGN KEY (`no_antrian`) REFERENCES `no_antri` (`no_antrian`);
 
 --
--- Constraints for table `dokter`
---
-ALTER TABLE `dokter`
-  ADD CONSTRAINT `dokter_ibfk_2` FOREIGN KEY (`id_poli`) REFERENCES `poli` (`id_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `hari_kerja_dokter`
 --
 ALTER TABLE `hari_kerja_dokter`
   ADD CONSTRAINT `hari_kerja_dokter_ibfk_1` FOREIGN KEY (`id_hari`) REFERENCES `daftar_hari` (`id_hari`),
-  ADD CONSTRAINT `hari_kerja_dokter_ibfk_2` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`),
-  ADD CONSTRAINT `hari_kerja_dokter_ibfk_3` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`);
+  ADD CONSTRAINT `hari_kerja_dokter_ibfk_2` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`);
 
 --
 -- Constraints for table `pasien`
