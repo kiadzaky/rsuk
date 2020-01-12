@@ -56,6 +56,12 @@ if($_SESSION['nik']!=null){
             include '../laporan/laporan_ambulan.php';
         }
     }
+
+    if(isset($_GET['profil'])){
+        if($_GET['profil']=='index'){
+            include '../index/profil.php';
+        }
+    }
 }else{
     header('location: ../login-register.php');
 }

@@ -117,7 +117,6 @@ $dr = query("SELECT * FROM `akun` where nama='admin' and username = 'admin'");
 include '../config.php';
 if (isset($_POST['updatedata'])) {
     $nik = $_POST['nik'];
-    $password_lama = $_POST['password_lama'];
     $password_baru = $_POST['password_baru'];
     $query = "UPDATE `akun` SET `password` = '$password_baru' WHERE `akun`.`nik` = '$nik'; ";
     $query_run = mysqli_query($link, $query);
@@ -130,5 +129,7 @@ if (isset($_POST['updatedata'])) {
         //echo '<script> alert("Data not Update")</script>';
         echo mysqli_error($query_run);
     } 
+}else{
+  echo "asd";
 }
 ?>
