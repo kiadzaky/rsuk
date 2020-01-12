@@ -21,7 +21,7 @@
                             <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-support"></i></span></a>
                                 <div role="menu" class="dropdown-menu message-dd task-dd animated zoomIn" style="width:6px; hight:6px; ">
                                     <div class="hd-mg-tt">
-                                       <a href="#"><h2>Profil</h2></a>
+                                       <a href="profil.php"><h2>Profil</h2></a>
                                     </div>
                                     <div class="hd-mg-tt">
                                         <a href="../logout.php"><h2>Log Out</h2></a>
