@@ -40,6 +40,9 @@ if($_SESSION['nik']!=null){
         if($_GET['dokter']=='index'){
             include '../dokter/index_dokter.php';
         }
+        elseif($_GET['dokter']=='tambah_jadwal'){
+            include '../dokter/index_jadwal.php';
+        }
     }
 
     if (isset($_GET['laporan'])) {
@@ -51,6 +54,12 @@ if($_SESSION['nik']!=null){
         }
         elseif($_GET['laporan']=='ambulance'){
             include '../laporan/laporan_ambulan.php';
+        }
+    }
+
+    if(isset($_GET['profil'])){
+        if($_GET['profil']=='index'){
+            include '../index/profil.php';
         }
     }
 }else{

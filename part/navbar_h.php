@@ -51,6 +51,7 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="?dokter=index">Input Data Dokter</a>
                                 </li>
+                                <li><a href="?dokter=tambah_jadwal">Input Jadwal Dokter</a></li>
                             </ul>
                         </div>
                         <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">

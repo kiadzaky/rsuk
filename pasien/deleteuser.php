@@ -9,9 +9,13 @@ if(isset($_POST['deletedata']))
   if($query_run)
   {
     echo '<script> alert("Data Delete")</script>';
-    header('Location: index_user.php');
+    echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?pasien=index");
+    </script>'; 
   }else
 {
-  echo '<script> alert("Data not Delete")</script>';
+ echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?pasien=index");
+    </script>'; 
 }
 }
