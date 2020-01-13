@@ -15,93 +15,10 @@ $query = query("SELECT * FROM `req_ambulance` WHERE id_ambulance='AMBL1' and (st
     <?php include '../part/header.php' ?>
     <!-- End Header Top Area -->
     <!-- Navbar Horizontal -->
-    <div class="main-menu-area mg-tb-40">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="index.php"><i class="notika-icon notika-menus"></i> Registrasi Pasien</a>
-                        </li>
-                        <li class="active"><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-alarm"></i> Ambulance</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Tracking Obat</a>
-                        </li>
-                        <li><a href="index.php"><i class="notika-icon notika-form"></i> Tambah Dokter</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Laporan</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content custom-menu-content">
-                        <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="ambulance_darurat.php">Ambulance Darurat</a>
-                                </li>
-                                <li><a href="penjemputan_jenazah.php">Penjemputan Jenazah</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Input Data Obat</a>
-                                </li>
-                                <li><a href="index.php">History Obat</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.php">Laporan Registrasi Pasien</a>
-                                </li>
-                                <li><a href="index.php">Laporan Tracking Obat</a>
-                                </li>
-                                <li><a href="index.php">Laporan Ambulance</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include '../part/navbar_h.php' ?>
     <!-- Mobile Menu end -->
     <!-- Navbar Vertical-->
-    <div class="mobile-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="mobile-menu">
-                        <nav id="dropdown">
-                            <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="index.php">Registrasi Pasien</a>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demoevent" href="#">Ambulance</a>
-                                    <ul id="demoevent" class="collapse dropdown-header-top">
-                                        <li><a href="ambulance_darurat.php">Ambulance Darurat</a></li>
-                                        <li><a href="penjemputan_jenazah.php">Penjemputan Jenazah</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#democrou" href="#">Tracking Obat</a>
-                                    <ul id="democrou" class="collapse dropdown-header-top">
-                                        <li><a href="index.php">Input Data Obat</a></li>
-                                        <li><a href="index.php">History Obat</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demolibra" href="index.php">Tambah Dokter</a>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Laporan</a>
-                                    <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="index.php">Laporan Registrasi Pasien</a></li>
-                                        <li><a href="index.php">Laporan Tracking Obat</a></li>
-                                        <li><a href="index.php">Laporan Ambulance</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include '../part/navbar_v.php' ?>
    <!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
 		<div class="container">
