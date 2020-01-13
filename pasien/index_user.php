@@ -84,7 +84,7 @@ $user = query("SELECT * FROM akun where level='1'");
                       <td><img src="<?= $row["foto"]; ?>" width="70px"></td>
                       <td><?= $row["username"]; ?></td>
                       <td>
-                        <button type="button" class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
+                        <a href="../pasien/deleteuser.php?id=<?= $row['nik'] ?>"><button type="button" class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -110,30 +110,6 @@ $user = query("SELECT * FROM akun where level='1'");
     </div>
   </div>
   <!-- Data Table area End-->
-  <!-- awal delete modal -->
-  <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete Data User</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form role="form" action="deleteuser.php" method="POST">
-          <div class="modal-body">
-            <input type="hidden" name="delete_id" id="delete_id">
-            <h4>Apakah anda yakin ingin menghapus data ini? </h4>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"> No </button>
-            <button type="submit" name="deletedata" class="btn btn-primary"> Yes </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- akhir delete modal -->
   <!-- Start Footer area-->
   <?php include '../part/footer.php' ?>
   <!-- End Footer area-->
@@ -141,19 +117,6 @@ $user = query("SELECT * FROM akun where level='1'");
 		============================================ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
  <?php include '../part/javascript.php' ?>
-  <script>
-    $(document).ready(function() {
-      $('.deletebtn').on('click', function() {
-        $('#deletemodal').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-          return $(this).text();
-        }).get();
-        console.log(data);
-        $('#delete_id').val(data[0]);
-      });
-    });
-  </script>
 </body>
 
 </html>
