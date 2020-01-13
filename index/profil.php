@@ -8,7 +8,7 @@ $dr = query("SELECT * FROM `akun` where nama='admin' and username = 'admin'");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Data Dokter | RSU Kaliwates Admin</title>
+  <title>RSU Kaliwates Admin</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- favicon
@@ -118,7 +118,7 @@ include '../config.php';
 if (isset($_POST['updatedata'])) {
     $nik = $_POST['nik'];
     $password_baru = $_POST['password_baru'];
-    $query = "UPDATE `akun` SET `password` = '$password_baru' WHERE `akun`.`nik` = '$nik'; ";
+    $query = "UPDATE `akun` SET `password` = '$password_baru' WHERE `akun`.`nik` = '$nik'";
     $query_run = mysqli_query($link, $query);
 
     if ($query_run) {
@@ -126,7 +126,6 @@ if (isset($_POST['updatedata'])) {
         window.location.replace("http://127.0.0.1/rsuk/index/?dokter=index");
         </script>';
     } else {
-        //echo '<script> alert("Data not Update")</script>';
         echo mysqli_error($query_run);
     } 
 }else{
