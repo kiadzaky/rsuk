@@ -184,7 +184,7 @@
             <br /><br />
         </div>
         <button type="submit">Tampilkan</button>
-        <a href="laporanregistrasipasien.php">Reset Filter</a>
+        <a href="../index/?laporan=registrasi">Reset Filter</a>
     </form>
     
     </div>
