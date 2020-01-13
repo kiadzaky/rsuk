@@ -112,20 +112,20 @@
         $filter = $_GET['filter']; // Ambil data filder yang dipilih user
         if($filter == '1'){ // Jika filter nya 1 (per tanggal)
             
-            echo '<a style="color:white;" type="button" href="cetakregispasien.php?filter=1&tanggal='.$_GET['tanggal'].'" class="notika-icon notika-sent"></a>';
+            echo '<a style="color:white;" type="button" href="../laporan/cetakregispasien.php?filter=1&tanggal='.$_GET['tanggal'].'" class="notika-icon notika-sent"></a>';
              // Tampilkan Laporan Registrasi Pasien sesuai tanggal yang diinput oleh user pada filter
         }else if($filter == '2'){ // Jika filter nya 2 (per bulan)
             
-            echo '<a style="color:white;" type="button" href="cetakregispasien.php?filter=2&bulan='.$_GET['bulan'].'&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
+            echo '<a style="color:white;" type="button" href="../laporan/cetakregispasien.php?filter=2&bulan='.$_GET['bulan'].'&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
            
         }else{ // Jika filter nya 3 (per tahun)
             
-            echo '<a style="color:white;" type="button" href="cetakregispasien.php?filter=3&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
+            echo '<a style="color:white;" type="button" href="../laporan/cetakregispasien.php?filter=3&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
             
             }
     }else{ // Jika user tidak mengklik tombol tampilkan
 
-        echo '<a style="color:white;" type="button" href="cetakregispasien.php" class="notika-icon notika-sent"></a>';
+        echo '<a style="color:white;" type="button" href="../laporan/cetakregispasien.php" class="notika-icon notika-sent"></a>';
         
     }
     ?>
@@ -137,7 +137,7 @@
 
                         <br>
                         <br>
-      <form method="get" action="">
+      <form method="get" action="../laporan/laporanregistrasipasien.php">
         <label>Filter Berdasarkan</label><br>
         <select name="filter" id="filter">
             <option value="">Pilih</option>
@@ -184,7 +184,7 @@
             <br /><br />
         </div>
         <button type="submit">Tampilkan</button>
-        <a href="laporanregistrasipasien.php">Reset Filter</a>
+        <a href="../index/?laporan=registrasi"><h3>Reset Halaman</h3></a>
     </form>
     
     </div>
