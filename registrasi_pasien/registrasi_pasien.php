@@ -1,7 +1,8 @@
 <?php
-require 'functions.php';
+require 'functionss.php';
 $rgs= query("SELECT * FROM pasien JOIN akun ON pasien.nik=akun.nik JOIN poli ON poli.id_poli=pasien.id_poli JOIN dokter
 ON dokter.id_poli=poli.id_poli JOIN jadwal ON jadwal.id_jadwal=dokter.id_jadwal");
+// $rgs= query("SELECT * FROM `pasien` JOIN akun ON pasien.nik=akun.nik JOIN `poli` ON poli._id_poli=pasien.id_poli JOIN `antrian` ON pasien.no_registrasi=antrian.no_registrasi");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -145,7 +146,7 @@ ON dokter.id_poli=poli.id_poli JOIN jadwal ON jadwal.id_jadwal=dokter.id_jadwal"
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
