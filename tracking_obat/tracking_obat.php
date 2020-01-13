@@ -230,7 +230,7 @@ $obt = query("SELECT * FROM status_obat");
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-  <form role="form" action="./updatecode.php" method="POST">
+  <form role="form" action="../tracking_obat/updatecode.php" method="POST">
           <div class="modal-body">
             <div class="form-example-int">
               <input type="hidden" name="update_id" id="update_id">
@@ -287,7 +287,7 @@ $obt = query("SELECT * FROM status_obat");
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-  <form role="form" action="deletecode.php" method="POST">
+  <form role="form" action="../tracking_obat/deletecode.php" method="POST">
           <div class="modal-body">
               <input type="hidden" name="delete_id" id="delete_id">
               <h4>Apakah anda yakin ingin menghapus data ini? </h4>
