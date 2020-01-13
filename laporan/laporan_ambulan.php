@@ -123,7 +123,7 @@ include '../functions.php';
             </div>
             <br>
                         <br>
-      <form method="get" action="">
+      <form method="get" action="../laporan/laporan_ambulan.php">
         <label>Filter Berdasarkan</label><br>
         <select name="filter" id="filter">
             <option value="">Pilih</option>
@@ -170,7 +170,7 @@ include '../functions.php';
             <br /><br />
         </div>
         <button type="submit">Tampilkan</button>
-        <a href="laporan_ambulan.php">Reset Filter</a>
+        <a href="../index/?laporan=ambulance"><h3>Reset Halaman</h3></a>
     </form>
           </div>
         </div>

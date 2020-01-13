@@ -184,7 +184,7 @@
             <br /><br />
         </div>
         <button type="submit">Tampilkan</button>
-        <a href="../index/?laporan=registrasi">Reset Filter</a>
+        <a href="../index/?laporan=registrasi"><h3>Reset Halaman</h3></a>
     </form>
     
     </div>
