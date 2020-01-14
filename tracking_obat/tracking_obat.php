@@ -190,7 +190,7 @@ $obt = query("SELECT * FROM status_obat");
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php $i = 1; ?>
+                                  <!-- <?php $i = 1; ?> -->
                                   <?php foreach ($obt as $row) : ?>
                                     <tr>
                                         <td><?= $row['id_obat']; ?></td>
@@ -201,7 +201,7 @@ $obt = query("SELECT * FROM status_obat");
                                            <button type="button"class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
                                         </td>
                                     </tr>
-                                    <?php $i++; ?>
+                                    <!-- <?php $i++; ?> -->
                                   <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>

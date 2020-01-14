@@ -1,8 +1,6 @@
 <?php
-require 'functionss.php';
-$rgs= query("SELECT * FROM pasien JOIN akun ON pasien.nik=akun.nik JOIN poli ON poli.id_poli=pasien.id_poli JOIN dokter
-ON dokter.id_poli=poli.id_poli JOIN jadwal ON jadwal.id_jadwal=dokter.id_jadwal");
-// $rgs= query("SELECT * FROM `pasien` JOIN akun ON pasien.nik=akun.nik JOIN `poli` ON poli._id_poli=pasien.id_poli JOIN `antrian` ON pasien.no_registrasi=antrian.no_registrasi");
+require '../functions.php';
+$rgs= query("SELECT * FROM pasien JOIN antrian ON pasien.no_registrasi=antrian.no_registrasi JOIN poli ON poli.id_poli=pasien.id_poli JOIN akun ON akun.nik=pasien.nik");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -176,20 +174,18 @@ ON dokter.id_poli=poli.id_poli JOIN jadwal ON jadwal.id_jadwal=dokter.id_jadwal"
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php $i = 1; ?>
                                   <?php foreach ($rgs as $row) : ?>
                                     <tr>
                                         <td><?= $row["no_registrasi"];?></td>
                                         <td><?= $row["nama"];?></td>
                                         <td><?= $row["poli"];?></td>
-                                        <td><?= $row["tanggal"];?></td>
+                                        <td><?= $row["waktu"];?></td>
                                         <td><?= $row["keluhan"];?></td>
                                         <td><?= $row["riwayat_sakit"];?></td>
                                         <td>
                                              <button type="button"class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
                                         </td>
                                     </tr>
-                                    <?php $i++; ?>
                                   <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>
@@ -222,7 +218,7 @@ ON dokter.id_poli=poli.id_poli JOIN jadwal ON jadwal.id_jadwal=dokter.id_jadwal"
           </div>
   <form role="form" action="deleteregistrasi.php" method="POST">
           <div class="modal-body">
-              <input type="hidden" name="delete_id" id="delete_id">
+              <input type="text" name="delete_id" id="delete_id">
               <h4>Apakah anda yakin ingin menghapus data ini? </h4>
             </div>
           <div class="modal-footer">
