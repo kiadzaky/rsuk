@@ -170,8 +170,8 @@ $jdw = query("SELECT * FROM jadwal");
                                         <td><?= $row['hari'];?></td>
                                         <td><?= $row['mulai'];?></td>
                                         <td><?= $row['selesai'];?></td>
-                                          <td> <button type="button"class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit"></i>edit</button>
-                                          <a href="deletecode.php?id=<?=$row['id_jadwal']?>" onclick=”return confirm(‘Yakin Hapus?’)”><button type="button"class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>delete</button></a>
+                                          <td> <!-- <button type="button"class="btn btn-primary btn-xs editbtn"><i class="fa fa-edit"></i>edit</button> -->
+                                          <a href="../dokter/deletecode.php?id=<?=$row['id_jadwal']?>" onclick=”return confirm(‘Yakin Hapus?’)”><button type="button"class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>delete</button></a>
                                         </td>
                                     </tr>
                                   <?php $i++; endforeach; ?>
@@ -202,7 +202,7 @@ $jdw = query("SELECT * FROM jadwal");
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-  <form role="form" action="./updatecode.php" method="POST">
+  <form role="form" action="../dokter/updatecode.php" method="POST">
           <div class="modal-body">
             <div class="form-example-int">
               <input type="hidden" name="update_id" id="update_id">
