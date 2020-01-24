@@ -30,7 +30,7 @@ $pdf->Cell(47.5,8,'STATUS',1,1,'C');
 $pdf->SetFont('Arial','',10);
 
 include '../konek.php';
-$mahasiswa = mysqli_query($link, "select * from status_obat");
+$mahasiswa = mysqli_query($link, "select * from status_obat where status='selesai'");
 while ($row = mysqli_fetch_array($mahasiswa)){
     $pdf->Cell(47.5,8,$row['id_obat'],1,0,'C');
     $pdf->Cell(47.5,8,$row['no_resep'],1,0,'C');
