@@ -11,12 +11,12 @@ if(isset($_POST['deletedata']))
     echo '<script> alert("Data Delete")</script>';
     echo '<script>
     window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
-    </script>'; 
+    </script>';
   }else
 {
   echo '<script>
     window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
-    </script>'; 
+    </script>';
 }
 }
 ?>
