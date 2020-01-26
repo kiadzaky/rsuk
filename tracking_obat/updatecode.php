@@ -14,12 +14,12 @@ if(isset($_POST['updatedata']))
     echo '<script> alert("Data Update")</script>';
     echo '<script>
     window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
-    </script>'; 
+    </script>';
   }else
 {
   echo '<script>
     window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
-    </script>'; 
+    </script>';
 }
 }
 ?>

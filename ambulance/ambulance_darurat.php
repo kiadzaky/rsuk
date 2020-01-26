@@ -101,7 +101,7 @@ $query = query("SELECT * FROM `req_ambulance` WHERE id_ambulance='AMBL2' and (st
                                            ?>
                                         </td>
                                         <td>
-                                          <select onchange="active_diactive_user(this.value,<?php echo $row['id_req_ambulance']; ?>)">
+                                          <select onchange="active_diactive_user(this.value, <?= $row['id_req_ambulance']; ?>)">
                                             <option value="1">Masuk</option>
                                             <option value="2">Diterima</option>
                                             <option value="3">Selesai</option>
@@ -154,9 +154,11 @@ $query = query("SELECT * FROM `req_ambulance` WHERE id_ambulance='AMBL2' and (st
     <!-- End Footer area-->
     <?php include '../part/javascript.php' ?>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script type="text/javascript">
     function active_diactive_user(val, id_req_ambulance){
+      var id_req_ambulance = id_req_ambulance;
+      var val = val;
         $.ajax({
           type:'post',
           url:'ambulance_update.php',

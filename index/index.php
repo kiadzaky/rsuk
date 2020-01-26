@@ -23,10 +23,10 @@ if($_SESSION['nik']!=null){
 
     if (isset($_GET['ambulance'])) {
         if($_GET['ambulance']=='darurat'){
-            include '../ambulance/ambulance-darurat.php';
+            include '../ambulance/ambulance_darurat.php';
         }
         elseif($_GET['ambulance']=='jenazah'){
-            include '../ambulance/penjemputan-jenazah.php';
+            include '../ambulance/penjemputan_jenazah.php';
         }
     }
 

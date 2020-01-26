@@ -98,7 +98,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                     <div class="breadcomb-report" style="padding-left: 480px;">
-                                    <a type="button" data-toggle="tooltip" data-placement="left" title="Download Report" class="btn" href="cetakobat.php" ><i class="notika-icon notika-sent"></i>
+                                    <a type="button" data-toggle="tooltip" data-placement="left" title="Download Report" class="btn" href="../laporan/cetakobat.php" ><i class="notika-icon notika-sent"></i>
 
                                       </a>
                                     </div>
@@ -137,7 +137,7 @@
                                     
                                     <?php 
                                     
-                                        $sql = mysqli_query($link,"SELECT * FROM status_obat");
+                                        $sql = mysqli_query($link,"SELECT * FROM status_obat where status='selesai' ");
                                     
                                     while($data = mysqli_fetch_array($sql)){
                                     ?>

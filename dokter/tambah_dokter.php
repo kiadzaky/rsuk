@@ -172,7 +172,7 @@ if(@$_GET['act'] =='') {
                                                    
                                                     $host = "localhost";
                                                     $usr = "root";
-                                                    $pwd = "kkhia1";
+                                                    $pwd = "";
                                                     $dbname = "db_rsuk";
                                                     $koneksi = mysqli_connect($host, $usr, $pwd, $dbname);
                                                     if(mysqli_connect_error()){

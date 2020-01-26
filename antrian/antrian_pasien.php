@@ -37,7 +37,7 @@
                                         <button class="btn btn-info notika-btn-info waves-effect" disabled="disabled" style="font-size: 25px; text-transform: uppercase; padding-right: 100px; padding-left: 100px"><?= $row['nama']?></button>
                                         </div>
                                 <div class="email-ctn-nock" style="margin-top: 10px">
-                                    <form method="post" action="reload_antrian.php">
+                                    <form method="post" action="../antrian/reload_antrian.php">
                                         <input type="text" name="no_antrian" hidden="" value="<?= $row['no_antrian']?>">
                                     <input class="btn-lg" type="submit" name="lanjut" value="LANJUT" style="background-color: green;color: white">
                                 </div>

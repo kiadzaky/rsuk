@@ -5,10 +5,29 @@ if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
   $status    = implode(', ', $_POST['status']);
+<<<<<<< HEAD
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
   echo '<script>
     window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
     </script>'; 
+=======
+  $tambah= mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
+  if($tambah)
+  if($query_run)
+  {
+    echo '<script> alert("Data Ditambahkan")</script>';
+    echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>';
+  }else
+{
+  echo '<script> alert("Data Gagal Ditambahkan")
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>';
+
+}
+  // header('location:tracking_obat.php?sukse');
+>>>>>>> d5ed6c695a41d54d0ccb362a9f4ff2dd05c540dd
 }
 $obt = query("SELECT * FROM status_obat");
 ?>
@@ -118,7 +137,7 @@ $obt = query("SELECT * FROM status_obat");
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Data Obat</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Data Obat</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -129,8 +148,7 @@ $obt = query("SELECT * FROM status_obat");
               <div class="form-group">
                   <label>No Resep</label>
                   <div class="nk-int-st">
-                    <?php include 'kode_otomatis.php' ?>
-                      <input type="hidden" name="no_resep"value="<?php echo $no_resep; ?>" class="form-control input-sm" required>
+                      <input type="text" name="no_resep" class="form-control input-sm" required>
                   </div>
               </div>
           </div>
@@ -239,7 +257,7 @@ $obt = query("SELECT * FROM status_obat");
                 <div class="form-group">
                     <label>No Resep</label>
                     <div class="nk-int-st">
-                        <input type="text" name="no_resep" id="no_resep" class="form-control input-sm" placeholder="Input No Resep" readonly>
+                        <input type="text" name="no_resep" id="no_resep" class="form-control input-sm" placeholder="Input No Resep">
                     </div>
                 </div>
             </div>

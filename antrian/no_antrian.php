@@ -63,10 +63,9 @@ if(isset($_POST['reset'])){
     for ($i=0; $i < 10; $i++) { 
         $nomor="P00".$i;
        $query = $link->query("UPDATE `no_antri` SET `status_antrian` = 'tersedia' WHERE `no_antri`.`no_antrian` = '$nomor' "); 
-       echo "<script>
-
-        document.location='no_antrian.php';
-        </script>";
+       echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?antrian=index");
+    </script>'; 
     }
     
 
