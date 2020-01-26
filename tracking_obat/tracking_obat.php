@@ -6,7 +6,9 @@ if (isset($_POST['insertdata'])){
   $jml_obat  = $_POST['jml_obat'];
   $status    = implode(', ', $_POST['status']);
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
-  header('location:tracking_obat.php?sukse');
+  echo '<script>
+    window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
+    </script>'; 
 }
 $obt = query("SELECT * FROM status_obat");
 ?>
