@@ -29,8 +29,8 @@ $user = query("SELECT * FROM akun where level='1'");
                     <i class="notika-icon notika-windows"></i>
                   </div>
                   <div class="breadcomb-ctn">
-                    <h2>Data Table</h2>
-                    <p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
+                    <h2>Data Pasien</h2>
+                    <p>Selamat Datang<span class="bread-ntd"> Admin </span></p>
                   </div>
                 </div>
               </div>
@@ -54,8 +54,8 @@ $user = query("SELECT * FROM akun where level='1'");
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="data-table-list">
             <div class="basic-tb-hd">
-              <h2>Data User</h2>
-              <p>Berisi semua data pemilik akun aplikasi RSU Kaliwates</p>
+              <h2>Data Pasien</h2>
+              <p>Berisi semua data pasien aplikasi RSU Kaliwates</p>
             </div>
             <div class="table-responsive">
               <table id="data-table-basic" class="table table-striped">
@@ -67,7 +67,6 @@ $user = query("SELECT * FROM akun where level='1'");
                     <th>Alamat</th>
                     <th>Jenis Kelamin</th>
                     <th>Np.Telepon</th>
-                    <th>Foto</th>
                     <th>Username</th>
                     <th>Opsi</th>
                   </tr>
@@ -81,7 +80,6 @@ $user = query("SELECT * FROM akun where level='1'");
                       <td><?= $row["alamat"]; ?></td>
                       <td><?= $row["jenis_kelamin"]; ?></td>
                       <td><?= $row["no_telepon"]; ?></td>
-                      <td><img src="<?= $row["foto"]; ?>" width="70px"></td>
                       <td><?= $row["username"]; ?></td>
                       <td>
                         <a href="../pasien/deleteuser.php?id=<?= $row['nik'] ?>"><button type="button" class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button></a>
@@ -97,7 +95,6 @@ $user = query("SELECT * FROM akun where level='1'");
                     <th>Alamat</th>
                     <th>Jenis Kelamin</th>
                     <th>No.Telepon</th>
-                    <th>Foto</th>
                     <th>Username</th>
                     <th>Opsi</th>
                   </tr>

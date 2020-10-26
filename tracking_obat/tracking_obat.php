@@ -5,12 +5,10 @@ if (isset($_POST['insertdata'])){
   $no_resep  = $_POST['no_resep'];
   $jml_obat  = $_POST['jml_obat'];
   $status    = implode(', ', $_POST['status']);
-<<<<<<< HEAD
   mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
   echo '<script>
     window.location.replace("http://127.0.0.1/rsuk/index/?obat=index");
     </script>'; 
-=======
   $tambah= mysqli_query($conn, "INSERT INTO status_obat VALUES ('','$no_resep','$jml_obat','$status')");
   if($tambah)
   if($query_run)
@@ -27,9 +25,8 @@ if (isset($_POST['insertdata'])){
 
 }
   // header('location:tracking_obat.php?sukse');
->>>>>>> d5ed6c695a41d54d0ccb362a9f4ff2dd05c540dd
 }
-$obt = query("SELECT * FROM status_obat");
+$obt = query("SELECT * FROM `status_obat` WHERE NOT status = 'selesai' ");
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -210,10 +207,10 @@ $obt = query("SELECT * FROM status_obat");
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <!-- <?php $i = 1; ?> -->
-                                  <?php foreach ($obt as $row) : ?>
+                                  
+                                  <?php $i=1; foreach ($obt as $row) : ?>
                                     <tr>
-                                        <td><?= $row['id_obat']; ?></td>
+                                        <td><?= $i; ?></td>
                                         <td><?= $row['no_resep'];?></td>
                                         <td><?= $row['jml_obat'];?></td>
                                         <td><?= $row['status'];?></td>
@@ -221,8 +218,8 @@ $obt = query("SELECT * FROM status_obat");
                                            <button type="button"class="btn btn-danger btn-xs deletebtn"><i class="fa fa-trash-o"></i>delete</button>
                                         </td>
                                     </tr>
-                                    <!-- <?php $i++; ?> -->
-                                  <?php endforeach; ?>
+                                    
+                                  <?php $i++; endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>

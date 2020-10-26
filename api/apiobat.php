@@ -1,6 +1,8 @@
 <?php
 	require_once '../konek.php';
-	$query = "select * from status_obat";
+if($_SERVER['REQUEST_METHOD']=='POST'){
+	$no_resep = $_POST['no_resep'];
+	$query = "select * from status_obat where no_resep=$no_resep";
 	$sql = mysqli_query($link, $query);
 	$ray = array();
 	while ($row = mysqli_fetch_array($sql)) {
@@ -15,4 +17,5 @@
 	echo json_encode($ray);
 
 	mysqli_close($link);
+}
 ?>

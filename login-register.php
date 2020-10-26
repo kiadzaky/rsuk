@@ -85,7 +85,8 @@ if($_SESSION['nik']==null){
                         <input type="password" class="form-control" placeholder="Password" name="password" required="">
                     </div>
                 </div>
-               <input type="submit" name="submit" class="notika-icon btn btn-success" value="LOGIN" style="color: black; ">
+                <br>
+               <input type="submit" name="submit" class="btn btn-success btn-xs" value="LOGIN" style="background-color: lightseagreen;">
                 
             </div>
         </form>

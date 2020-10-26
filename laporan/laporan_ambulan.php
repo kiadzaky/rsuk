@@ -100,20 +100,20 @@ include '../functions.php';
         $filter = $_GET['filter']; // Ambil data filder yang dipilih user
         if($filter == '1'){ // Jika filter nya 1 (per tanggal)
             
-            echo '<a style="color:white;" type="button" href="print_ambulance.php?filter=1&tanggal='.$_GET['tanggal'].'" class="notika-icon notika-sent"></a>';
+            echo '<a style="color:white;" type="button" href="../laporan/print_ambulance.php?filter=1&tanggal='.$_GET['tanggal'].'" class="notika-icon notika-sent"></a>';
              // Tampilkan Laporan Registrasi Pasien sesuai tanggal yang diinput oleh user pada filter
         }else if($filter == '2'){ // Jika filter nya 2 (per bulan)
             
-            echo '<a style="color:white;" type="button" href="print_ambulance.php?filter=2&bulan='.$_GET['bulan'].'&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
+            echo '<a style="color:white;" type="button" href="../laporan/print_ambulance.php?filter=2&bulan='.$_GET['bulan'].'&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
            
         }else{ // Jika filter nya 3 (per tahun)
             
-            echo '<a style="color:white;" type="button" href="print_ambulance.php?filter=3&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
+            echo '<a style="color:white;" type="button" href="../laporan/print_ambulance.php?filter=3&tahun='.$_GET['tahun'].'" class="notika-icon notika-sent"></a>';
             
             }
     }else{ // Jika user tidak mengklik tombol tampilkan
 
-        echo '<a style="color:white;" type="button" href="print_ambulance.php" class="notika-icon notika-sent"></a>';
+        echo '<a style="color:white;" type="button" href="../laporan/print_ambulance.php" class="notika-icon notika-sent"></a>';
         
     }
     ?>
@@ -161,7 +161,7 @@ include '../functions.php';
                 <option value="">Pilih</option>
                 <?php
                 $query = "SELECT YEAR(tanggal) AS tahun FROM req_ambulance GROUP BY YEAR(tanggal)"; // Tampilkan tahun sesuai di tabel transaksi
-                $sql = mysqli_query($link, $query); // Eksekusi/Jalankan query dari variabel $query
+                $sql = mysqli_query($conn, $query); // Eksekusi/Jalankan query dari variabel $query
                 while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
                     echo '<option value="'.$data['tahun'].'">'.$data['tahun'].'</option>';
                 }
